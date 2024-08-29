@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://xbd4itexu6o8"]
+
+[ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="1_3v6no"]
+[ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="2_mw6fr"]
+[ext_resource type="Script" path="res://addons/behaviors/menu/closes_menu.gd" id="3_7r0pj"]
+[ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="4_dhej2"]
+
+[node name="AboutScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[u]Score Space JAM 31[/u]
+
+- DanyB0i 
+- Harmoen
+- MiaMia
+- ZAFT"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("1_3v6no")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("2_mw6fr")
+
+[node name="ClosesMenu" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("3_7r0pj")
+
+[node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("4_dhej2")

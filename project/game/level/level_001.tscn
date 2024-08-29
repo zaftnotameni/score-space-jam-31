@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5266jl6esq6g"]
+
+[ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/pauseable.gd" id="3_p86jh"]
+[ext_resource type="Script" path="res://game/behavior/sets_target_as_pause_screen.gd" id="4_fyj6n"]
+
+[node name="Level001" type="Node2D"]
+
+[node name="StateGame" type="Node" parent="."]
+script = ExtResource("1_fkxgb")
+
+[node name="Unpauses" type="Node" parent="."]
+script = ExtResource("2_pmrin")
+
+[node name="Pauseable" type="Node" parent="."]
+script = ExtResource("3_p86jh")
+
+[node name="SetsTargetAsPauseScreen" type="Node" parent="Pauseable"]
+script = ExtResource("4_fyj6n")

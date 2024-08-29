@@ -1,0 +1,20 @@
+
+[b]Scene[/b]
+[
+	"res://game/main/main.tscn",
+	"res://game/screen/about_screen.tscn",
+	"res://game/screen/options_screen.tscn",
+	"res://game/screen/pause_screen.tscn",
+	"res://game/screen/title_screen.tscn",
+	"res://game/screen/transition_screen.tscn"
+]
+[b]Shader[/b]
+[
+	"res://game/shaders/pixel_perfect_dissolve_shader.gdshader",
+	"res://game/shaders/squares_screen_transition_shader.gdshader"
+]
+[b]Material[/b]
+[
+	"res://generated/materials/pixel-perfect-dissolve-shader_material.tres",
+	"res://generated/materials/squares-screen-transition-shader_material.tres"
+]
