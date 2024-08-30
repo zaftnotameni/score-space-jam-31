@@ -7,6 +7,7 @@ class_name Pauseable extends Node
 @export var target : Node
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT if Engine.is_editor_hint() else ProcessMode.PROCESS_MODE_ALWAYS
 	if not target: target = get_parent()
 	target.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -34,4 +35,5 @@ func on_unpaused():
 	State.pop_paused()
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	if not scene: push_error('missing scene on %s' % get_path())

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67t7a0hpaa0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54ywe"]
+size = Vector2(320, 320)
+
+[sub_resource type="Gradient" id="Gradient_axm6e"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mo0qu"]
+gradient = SubResource("Gradient_axm6e")
+width = 320
+height = 320
+
+[node name="Furniture" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54ywe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_mo0qu")

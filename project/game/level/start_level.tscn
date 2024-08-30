@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://nu5va1j5pndw"]
+
+[ext_resource type="Script" path="res://game/level/start_level_scene.gd" id="1_8hysr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cr7e5"]
+size = Vector2(320, 20)
+
+[node name="StartLevel" type="Area2D"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_8hysr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cr7e5")

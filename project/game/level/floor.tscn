@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://de7n37cl6bnng"]
+
+[ext_resource type="Script" path="res://game/level/floor_scene.gd" id="1_wtaqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtrqn"]
+size = Vector2(2400, 64)
+
+[sub_resource type="Gradient" id="Gradient_unh54"]
+offsets = PackedFloat32Array(0.0028169, 0.988732)
+colors = PackedColorArray(0.110901, 0.617188, 0.534125, 1, 0.0827484, 0.0186768, 0.53125, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cbu5v"]
+gradient = SubResource("Gradient_unh54")
+width = 2400
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[node name="Floor" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_wtaqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xtrqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_cbu5v")

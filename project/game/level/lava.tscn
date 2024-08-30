@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c12hg1fnj7lid"]
+
+[ext_resource type="Script" path="res://game/level/lava_scene.gd" id="1_ax2qc"]
+
+[sub_resource type="Gradient" id="Gradient_tcbvx"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.960938, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pj6lc"]
+gradient = SubResource("Gradient_tcbvx")
+width = 2400
+fill_from = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv58x"]
+size = Vector2(2400, 64)
+
+[node name="Lava" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ax2qc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_pj6lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hv58x")
