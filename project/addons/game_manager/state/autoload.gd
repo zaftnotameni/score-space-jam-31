@@ -8,6 +8,7 @@ signal sig_game_state_victory()
 signal sig_game_state_initial()
 signal sig_transition_finished()
 signal sig_transition_started()
+signal sig_score_changed()
 signal sig_player_ready()
 signal sig_player_enter()
 signal sig_player_exit()
@@ -16,6 +17,8 @@ enum GameState { INITIAL = 0, LOADING, TITLE, MENU, CUTSCENE, GAME, PAUSED, VICT
 
 static var current_time : float = -1.0
 static var victory_time : float = -1.0
+static var current_score : int = -1
+static var victory_score : int = -1
 static var game_state : GameState = GameState.INITIAL
 static var game_state_stack : Array[GameState] = [GameState.INITIAL]
 static var transition : bool = false
@@ -101,7 +104,10 @@ static func react_to_game_state_changed(prev_state:GameState):
 		if game_state == GameState.GAME: State.first().sig_game_state_game.emit()
 	if game_state == GameState.GAME: soft_reset_time()
 	if game_state == GameState.TITLE: reset_victory_time()
+	if game_state == GameState.GAME: soft_reset_score()
+	if game_state == GameState.TITLE: reset_victory_score()
 	if game_state == GameState.VICTORY: promote_current_time_to_victory_time()
+	if game_state == GameState.VICTORY: promote_current_score_to_victory_score()
 
 static func name_of(state_id:GameState) -> String:
 	return GameState.find_key(state_id)
@@ -113,10 +119,18 @@ func _enter_tree() -> void:
 func _process(delta: float) -> void:
 	if game_state == GameState.GAME: current_time += delta
 
+static func promote_current_score_to_victory_score():
+	victory_score = current_score if current_score > 1 else victory_score
+	if victory_score > 1:
+		Config.set_last_victory_score(victory_score)
+
 static func promote_current_time_to_victory_time():
 	victory_time = current_time if current_time > 10 else victory_time
 	if victory_time > 10:
-		Config.set_last_victory(victory_time)
+		Config.set_last_victory_time(victory_time)
+
+static func reset_victory_score():
+	victory_score = -1
 
 static func reset_victory_time():
 	victory_time = -1.0
@@ -124,8 +138,29 @@ static func reset_victory_time():
 static func soft_reset_time():
 	current_time = current_time if current_time >= 0.0 else 0.0
 
+static func soft_reset_score():
+	current_score = current_score if current_score >= 0 else 0
+
 static func reset_time():
 	current_time = -1.0
+
+static func reset_score():
+	current_score = -1
+
+static func update_score(score:int=0):
+	current_score = score
+	if State.first():
+		State.first().sig_score_changed.emit()
+
+static func add_score(score:int=0):
+	current_score += score
+	if State.first():
+		State.first().sig_score_changed.emit()
+
+static func remove_score(score:int=0):
+	current_score -= score
+	if State.first():
+		State.first().sig_score_changed.emit()
 
 static func tree() -> SceneTree: return Engine.get_main_loop()
 static func first() -> State: return tree().get_first_node_in_group(GROUP)
