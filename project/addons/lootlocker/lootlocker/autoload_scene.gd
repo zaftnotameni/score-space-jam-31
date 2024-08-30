@@ -91,15 +91,18 @@ func _on_authentication_request_completed(_result, _response_code, _headers, bod
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	if not OS.has_feature('web'): print_verbose(json.get_data())
-	var player_identifier := json.get_data()['player_identifier'] as String
-	var player_name := json.get_data()['player_name'] as String
+	var data := json.get_data()
+	var player_identifier := data['player_identifier'] as String
+	var player_public_uid := data['public_uid'] as String
+	var player_name := data['player_name'] as String
 	player_data.lootlocker_player_identifier = player_identifier
+	player_data.lootlocker_player_public_uid = player_public_uid
 	player_data.lootlocker_player_name = player_name
 	if player_name and not player_name.is_empty():
 		player_data.player_name = player_name
 	player_data.save()
 	leaderboard_auth = json.get_data()
-	session_token = json.get_data()['session_token']
+	session_token = data['session_token']
 	sig_auth_request_completed.emit()
 	auth_http.queue_free()
 	fl_authenticating = false
@@ -133,6 +136,22 @@ func _on_leaderboard_request_completed(_result, _response_code, _headers, body):
 		leaderboardFormatted += str(json.get_data().items[n].score)+str("\n")
 	print_verbose(leaderboardFormatted)
 	leaderboard_http.queue_free()
+
+static func upload_score(score: int=0, custom_name:String=''):
+	print_verbose('upload score %s %s' % [score, custom_name])
+	var api := Lootlocker.first()
+	if not api: push_error('using lootlocker without the api being ready'); return
+
+	if custom_name and not custom_name.is_empty():
+		Config.set_player_name(custom_name)
+		api._change_player_name(custom_name)
+	else:
+		var player_name := Config.get_player_name()
+		if player_name and not player_name.is_empty():
+			api._change_player_name(player_name)
+
+	if score and score > 0:
+		api._upload_score(score)
 
 func _upload_score(_score: int):
 	await wait_for_auth()
@@ -225,13 +244,21 @@ class LootlockerRankLabel extends Label:
 
 class LootlockerPlayerLabel extends Label:
 	func with_text(txt:String) -> LootlockerPlayerLabel: text = txt; return self
-	func from_item(item:Dictionary) -> LootlockerPlayerLabel: return with_text(LootlockerItem.player_name_from_item(item))
+	func from_item(item:Dictionary) -> LootlockerPlayerLabel:
+		var api := Lootlocker.first()
+		if api and api.player_data:
+			var public_uid_from_item := LootlockerItem.player_uid_from_item(item)
+			if public_uid_from_item == api.player_data.lootlocker_player_public_uid:
+				theme_type_variation = 'current_player'
+		return with_text(LootlockerItem.player_name_from_item(item))
+
 	func ephemeral() -> LootlockerPlayerLabel: set_meta('ephemeral', true); return self
 	func _enter_tree() -> void:
 		self.clip_text = true
 		self.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		ControlUtil.control_set_hexpand_fill(self)
 		ControlUtil.control_set_minimum_x(self, 400)
+		
 
 class LootlockerScoreLabel extends Label:
 	func with_text(txt:String) -> LootlockerScoreLabel: text = txt; return self
@@ -242,6 +269,10 @@ class LootlockerScoreLabel extends Label:
 		ControlUtil.control_set_hshrink_end(self)
 
 class LootlockerItem extends RefCounted:
+	static func player_uid_from_item(item:={}) -> String:
+		if item and item.has('player') and item.player and item.player.has('public_uid') and item.player.public_uid and not item.player.public_uid.is_empty(): return item.player.public_uid
+		return ''
+
 	static func player_name_from_item(item:={}) -> String:
 		if item and item.has('player') and item.player and item.player.has('name') and item.player.name and not item.player.name.is_empty(): return item.player.name
 		if item and item.has('player') and item.player and item.player.has('public_uid') and item.player.public_uid and not item.player.public_uid.is_empty(): return item.player.public_uid

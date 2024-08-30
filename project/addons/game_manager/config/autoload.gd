@@ -28,14 +28,23 @@ static func set_player_name(player_name:String) -> String:
 	save_settings()
 	return player_name
 
-static func get_last_victory() -> float:
-	return settings.get_value('player', 'last_victory', -1.0)
+static func get_last_victory_time() -> float:
+	return settings.get_value('player', 'last_victory_time', -1.0)
 
-static func set_last_victory(time:float) -> float:
+static func set_last_victory_time(time:float) -> float:
 	if time < 10: return time
-	settings.set_value('player', 'last_victory', time)
+	settings.set_value('player', 'last_victory_time', time)
 	save_settings()
 	return time
+
+static func get_last_victory_score() -> int:
+	return settings.get_value('player', 'last_victory_score', -1)
+
+static func set_last_victory_score(score:float) -> int:
+	if score < 1: return score
+	settings.set_value('player', 'last_victory_score', score)
+	save_settings()
+	return score
 
 static func get_player_has_victory() -> bool:
 	return settings.get_value('player', 'has_victory', false)

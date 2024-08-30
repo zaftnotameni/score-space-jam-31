@@ -95,3 +95,5 @@ RichTextLabel/font_sizes/bold_italics_font_size = 32
 RichTextLabel/font_sizes/italics_font_size = 32
 RichTextLabel/font_sizes/mono_font_size = 24
 RichTextLabel/font_sizes/normal_font_size = 32
+current_player/base_type = &"Label"
+current_player/colors/font_color = Color(0.835294, 1, 0.8, 1)
