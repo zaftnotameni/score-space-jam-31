@@ -1,26 +1,32 @@
 [gd_scene load_steps=15 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
+[ext_resource type="Script" path="res://game/level/level_tooler.gd" id="1_v2otw"]
+[ext_resource type="Script" path="res://game/player/spawner.gd" id="2_pifs8"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
 [ext_resource type="PackedScene" uid="uid://bsvjn4whb84da" path="res://game/player/character.tscn" id="3_n8apo"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauseable.gd" id="3_p86jh"]
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_pause_screen.gd" id="4_fyj6n"]
 [ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_gkftf"]
 [ext_resource type="PackedScene" uid="uid://blcn8ouedmnvf" path="res://game/screen/pause_screen.tscn" id="8_2esjf"]
-[ext_resource type="PackedScene" uid="uid://c12hg1fnj7lid" path="res://game/level/lava.tscn" id="10_8o3tf"]
-[ext_resource type="PackedScene" uid="uid://de7n37cl6bnng" path="res://game/level/floor.tscn" id="11_3ly3t"]
-[ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/furniture_manager/furniture_manager.tscn" id="11_d8hj0"]
+[ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/level/furniture.tscn" id="10_nn2ek"]
 [ext_resource type="PackedScene" uid="uid://nu5va1j5pndw" path="res://game/level/start_level.tscn" id="13_gaytk"]
+[ext_resource type="PackedScene" uid="uid://dlj1q8hqk0gxa" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="15_yrv1a"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c4ply"]
 
 [node name="Level001" type="Node2D"]
 process_mode = 1
 
-[node name="Character" parent="." instance=ExtResource("3_n8apo")]
-position = Vector2(-314, 29)
+[node name="LevelTooler" type="Node" parent="."]
+script = ExtResource("1_v2otw")
+
+[node name="PlayerSpawner" type="Area2D" parent="."]
+position = Vector2(-28, 678)
+script = ExtResource("2_pifs8")
+active = true
+scene = ExtResource("3_n8apo")
+metadata/created_via_tool_script = true
 
 [node name="Camera" type="Camera2D" parent="."]
 process_callback = 0
@@ -47,6 +53,18 @@ metadata/created_via_tool_script = true
 script = ExtResource("4_fyj6n")
 metadata/created_via_tool_script = true
 
+[node name="Furniture" parent="." instance=ExtResource("10_nn2ek")]
+position = Vector2(1246, 766)
+
+[node name="Furniture2" parent="." instance=ExtResource("10_nn2ek")]
+position = Vector2(713, 695)
+
+[node name="Furniture3" parent="." instance=ExtResource("10_nn2ek")]
+position = Vector2(232, 749)
+
+[node name="Furniture4" parent="." instance=ExtResource("10_nn2ek")]
+position = Vector2(-276, 788)
+
 [node name="StartLevel" parent="." instance=ExtResource("13_gaytk")]
 position = Vector2(-274, 621)
 
@@ -57,21 +75,5 @@ script = ExtResource("14_tu8cc")
 script = ExtResource("15_yrv1a")
 song = "level"
 
-[node name="FurnitureManager" parent="." instance=ExtResource("11_d8hj0")]
-
-[node name="WorldFloor" type="StaticBody2D" parent="."]
-position = Vector2(-25, -63)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]
-position = Vector2(2, 700)
-shape = SubResource("WorldBoundaryShape2D_c4ply")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Lava" parent="CanvasLayer" instance=ExtResource("10_8o3tf")]
-unique_name_in_owner = true
-position = Vector2(676, 816)
-
-[node name="Floor" parent="CanvasLayer" instance=ExtResource("11_3ly3t")]
-unique_name_in_owner = true
-position = Vector2(678, 733)
+[node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
+position = Vector2(474, 704)
