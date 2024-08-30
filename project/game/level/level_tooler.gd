@@ -39,4 +39,3 @@ func on_tooled():
 
 func set_tooled(v:bool):
 	ToolUtil.set_tooled(self, v)
-

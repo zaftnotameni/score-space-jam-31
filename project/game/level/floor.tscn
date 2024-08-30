@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://game/level/floor_scene.gd" id="1_wtaqe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtrqn"]
-size = Vector2(2400, 64)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0h6ko"]
 
 [sub_resource type="Gradient" id="Gradient_unh54"]
 offsets = PackedFloat32Array(0.0028169, 0.988732)
@@ -21,7 +20,8 @@ collision_mask = 2
 script = ExtResource("1_wtaqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xtrqn")
+position = Vector2(0, -31)
+shape = SubResource("WorldBoundaryShape2D_0h6ko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_cbu5v")
