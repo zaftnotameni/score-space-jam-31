@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgmjx8qkv016w"]
+[gd_scene load_steps=6 format=3 uid="uid://dgmjx8qkv016w"]
 
 [ext_resource type="Script" path="res://addons/game_manager/layers/at/menu.gd" id="1_4ste7"]
 [ext_resource type="PackedScene" uid="uid://dfjend8sgr2kt" path="res://game/screen/title_screen.tscn" id="2_pcnfg"]
 [ext_resource type="Script" path="res://addons/game_manager/layers/at/overlay.gd" id="3_5iqh5"]
 [ext_resource type="PackedScene" uid="uid://d3bhqatg6mstm" path="res://game/screen/transition_screen.tscn" id="4_61isw"]
+[ext_resource type="Script" path="res://game/behavior/plays_song.gd" id="5_sl3el"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,3 +15,6 @@ scene = ExtResource("2_pcnfg")
 [node name="AtOverlay" type="Node" parent="."]
 script = ExtResource("3_5iqh5")
 scene = ExtResource("4_61isw")
+
+[node name="PlaysSong" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_sl3el")

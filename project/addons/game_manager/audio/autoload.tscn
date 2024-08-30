@@ -20,7 +20,7 @@ stream = ExtResource("2_pfvij")
 stream = ExtResource("2_pfvij")
 bus = &"BGM"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGM"]
+[node name="Level" type="AudioStreamPlayer" parent="BGM"]
 stream = ExtResource("3_7bfg3")
 bus = &"BGM"
 playback_type = 1
