@@ -15,9 +15,11 @@ var dash_min_duration : float
 var jump_velocity : float
 var jump_gravity_up : float
 var jump_gravity_down : float
+var jump_gravity_down_gliding : float
 var fall_gravity : float
 var dash_gravity : float
 var max_speed_from_gravity: float
+var max_speed_from_gravity_gliding: float
 var jump_time_to_peak : float
 var jump_time_to_land : float
 var jump_height: float
@@ -30,6 +32,7 @@ func initialize():
 	speed_loss_factor = 10.0
 	dash_speed = speed * 4.0
 	max_speed_from_gravity = dash_speed * 0.5
+	max_speed_from_gravity_gliding = max_speed_from_gravity / 4.0
 	dash_max_duration = 0.5
 	dash_min_duration = 0.1
 	coyote_duration = 0.1
@@ -43,6 +46,7 @@ func run_kinematic_equations():
 	jump_velocity = (2.0 * jump_height) / jump_time_to_peak
 	jump_gravity_up = (2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
 	jump_gravity_down = (2.0 * jump_height) / (jump_time_to_land * jump_time_to_land)
+	jump_gravity_down_gliding = jump_gravity_down / 2.0
 	fall_gravity = (jump_gravity_up + jump_gravity_down) / 2.0
 	dash_gravity = 0.0
 
