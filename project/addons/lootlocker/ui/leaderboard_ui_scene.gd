@@ -11,7 +11,7 @@ func on_leaderboards(items:=[]):
   if items and not items.is_empty(): label_status.text = 'Showing Entries: 1-%s' % items.size()
   if not items or items.is_empty(): label_status.text = 'No entries yet, World Record for grabs!'
   for grid_entry in time_grid.get_children(): if grid_entry.get_meta('ephemeral', false): grid_entry.queue_free()
-  Lootlocker.LootlockerDisplay.items_to_labels.call_deferred(time_grid, items)
+  Lootlocker.LootlockerDisplay.items_to_labels_score_mode.call_deferred(time_grid, items)
 
 func on_player_name(p_name:='???'):
   label_status.text = 'Player name retrieved: %s' % p_name

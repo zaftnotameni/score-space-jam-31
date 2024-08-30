@@ -261,8 +261,18 @@ class LootlockerPlayerLabel extends Label:
 		
 
 class LootlockerScoreLabel extends Label:
+	var is_time : bool = true
+	var is_score : bool = false
+	func as_score() -> LootlockerScoreLabel: is_score = true; is_time = false; return self
+	func as_time() -> LootlockerScoreLabel: is_score = false; is_time = true; return self
 	func with_text(txt:String) -> LootlockerScoreLabel: text = txt; return self
-	func from_item(item:Dictionary) -> LootlockerScoreLabel: return with_text(LootlockerDisplay.string_format_time(LootlockerItem.time_from_item_in_seconds(item)))
+
+	func from_item(item:Dictionary) -> LootlockerScoreLabel:
+		if is_time:
+			return with_text(LootlockerDisplay.string_format_time(LootlockerItem.time_from_item_in_seconds(item)))
+		else:
+			return with_text(str(LootlockerItem.score_from_item(item)))
+
 	func ephemeral() -> LootlockerScoreLabel: set_meta('ephemeral', true); return self
 	func _enter_tree() -> void:
 		self.clip_text = false
@@ -277,6 +287,10 @@ class LootlockerItem extends RefCounted:
 		if item and item.has('player') and item.player and item.player.has('name') and item.player.name and not item.player.name.is_empty(): return item.player.name
 		if item and item.has('player') and item.player and item.player.has('public_uid') and item.player.public_uid and not item.player.public_uid.is_empty(): return item.player.public_uid
 		return ''
+
+	static func score_from_item(item:={}) -> int:
+		if item and item.has('score') and item.score > 0: return item.score
+		return -1
 
 	static func time_from_item_in_seconds(item:={}) -> float:
 		if item and item.has('score') and item.score > 0: return item.score / 1000.0
@@ -299,13 +313,23 @@ class LootlockerDisplay extends RefCounted:
 		return formatted_time
 
 	## parent: ideally a grid container with 3 columns
-	static func items_to_labels(parent: Node, items:Array=[]):
+	static func items_to_labels_score_mode(parent: Node, items:Array=[]):
 		if items and not items.is_empty():
 			var index : int = 0
 			for item in items:
 				parent.add_child(LootlockerRankLabel.new().from_index(index).ephemeral())
 				parent.add_child(LootlockerPlayerLabel.new().from_item(item).ephemeral())
-				parent.add_child(LootlockerScoreLabel.new().from_item(item).ephemeral())
+				parent.add_child(LootlockerScoreLabel.new().as_score().from_item(item).ephemeral())
+				index += 1
+
+	## parent: ideally a grid container with 3 columns
+	static func items_to_labels_time_mode(parent: Node, items:Array=[]):
+		if items and not items.is_empty():
+			var index : int = 0
+			for item in items:
+				parent.add_child(LootlockerRankLabel.new().from_index(index).ephemeral())
+				parent.add_child(LootlockerPlayerLabel.new().from_item(item).ephemeral())
+				parent.add_child(LootlockerScoreLabel.new().as_time().from_item(item).ephemeral())
 				index += 1
 
 class LootlockerTreeUtil extends RefCounted:
