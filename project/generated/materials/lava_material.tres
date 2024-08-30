@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cwidbqg7ekcfh"]
+
+[ext_resource type="Shader" path="res://game/shaders/lava.gdshader" id="1_d60no"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pevuh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_breav"]
+width = 1200
+height = 64
+seamless = true
+noise = SubResource("FastNoiseLite_pevuh")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_d60no")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_breav")

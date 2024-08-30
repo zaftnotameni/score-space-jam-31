@@ -1,8 +1,17 @@
 
 [b]Scene[/b]
 [
+	"res://game/level/floor.tscn",
+	"res://game/level/furniture.tscn",
+	"res://game/level/lava.tscn",
+	"res://game/level/lava_and_floor.tscn",
+	"res://game/level/level_001.tscn",
+	"res://game/level/start_level.tscn",
 	"res://game/main/main.tscn",
+	"res://game/player/character.tscn",
 	"res://game/screen/about_screen.tscn",
+	"res://game/screen/game_over_screen.tscn",
+	"res://game/screen/leaderboard_screen.tscn",
 	"res://game/screen/options_screen.tscn",
 	"res://game/screen/pause_screen.tscn",
 	"res://game/screen/title_screen.tscn",
@@ -10,11 +19,13 @@
 ]
 [b]Shader[/b]
 [
+	"res://game/shaders/lava.gdshader",
 	"res://game/shaders/pixel_perfect_dissolve_shader.gdshader",
 	"res://game/shaders/squares_screen_transition_shader.gdshader"
 ]
 [b]Material[/b]
 [
+	"res://generated/materials/lava_material.tres",
 	"res://generated/materials/pixel-perfect-dissolve-shader_material.tres",
 	"res://generated/materials/squares-screen-transition-shader_material.tres"
 ]
