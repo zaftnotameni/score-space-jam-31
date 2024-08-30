@@ -10,8 +10,8 @@ gradient = SubResource("Gradient_tcbvx")
 width = 2400
 fill_from = Vector2(1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv58x"]
-size = Vector2(2400, 64)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ne501"]
+distance = 24.0
 
 [node name="Lava" type="Area2D"]
 collision_layer = 8
@@ -22,4 +22,4 @@ script = ExtResource("1_ax2qc")
 texture = SubResource("GradientTexture2D_pj6lc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hv58x")
+shape = SubResource("WorldBoundaryShape2D_ne501")
