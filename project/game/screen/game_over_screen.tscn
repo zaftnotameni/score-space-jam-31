@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://f34duj01d1it"]
+
+[ext_resource type="Script" path="res://game/behavior/quits_to_title.gd" id="1_mqvfj"]
+[ext_resource type="Script" path="res://game/behavior/sets_target_as_title_screen.gd" id="2_i1n12"]
+[ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="2_vqctg"]
+[ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="3_rr3if"]
+[ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="4_hp366"]
+
+[node name="GameOverScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Title"
+
+[node name="QuitsToTitle" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("1_mqvfj")
+
+[node name="SetsTargetAsTitleScreen" type="Node" parent="MarginContainer/VBoxContainer/Button/QuitsToTitle"]
+script = ExtResource("2_i1n12")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("2_vqctg")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("3_rr3if")
+
+[node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/Button"]
+script = ExtResource("4_hp366")
