@@ -3,6 +3,7 @@ class_name Unpauses extends Node
 @export var pauses_on_exit : bool = false
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT if Engine.is_editor_hint() else ProcessMode.PROCESS_MODE_ALWAYS
 
 func _ready() -> void:

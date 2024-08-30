@@ -20,7 +20,7 @@ class_name CameraFollowsPlayer extends Node
 ## Group of the tilemap layer to use for defining camera boundaries
 @export var tilemap_layer_group : StringName
 ## Group of the player to use for resolving the player
-@export var player_group: StringName
+@export var player_group: StringName = 'character_scene'
 
 func trauma_request(t:float, m:float=0.3):
 	trauma = m if (trauma + t >= m) else trauma + t
@@ -47,6 +47,7 @@ func on_player_exit():
 	follow_target = null
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	if State.first():
 		State.first().sig_player_ready.connect(on_player_ready)
 		State.first().sig_player_exit.connect(on_player_exit)
@@ -65,6 +66,7 @@ func do_follow_target(n:Node2D,d:float) -> void:
 func _physics_process(delta: float) -> void: do_process(delta)
 
 func do_process(delta:float):
+	if Engine.is_editor_hint(): return
 	if not camera: return
 	if camera.is_queued_for_deletion(): return
 
@@ -84,6 +86,7 @@ func shake_pure_random(t:=trauma):
 const GROUP := 'camera_follows_player'
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	add_to_group(GROUP)
 	set_process(false)
 	set_physics_process(true)
