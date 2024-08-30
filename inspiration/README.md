@@ -1,9 +1,9 @@
 # Inspiration
 
+![](/inspiration/ooze.png)
 ![](/inspiration/hollow.png)
 ![](/inspiration/limbo.png)
 ![](/inspiration/inside.png)
-![](/inspiration/ooze.png)
 ![](/inspiration/ori.png)
 
 [robot angel alt](/inspiration/roboangelalt.mp3)
