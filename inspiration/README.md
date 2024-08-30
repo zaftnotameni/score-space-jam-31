@@ -2,6 +2,7 @@
 
 ![](/inspiration/hollow.png)
 ![](/inspiration/limbo.png)
+![](/inspiration/inside.png)
 ![](/inspiration/ooze.png)
 ![](/inspiration/ori.png)
 
