@@ -14,7 +14,14 @@ func on_state_enter(_prev:Node=null) -> void:
 	pass
 
 func apply_gravity(delta:float) -> void:
-	character.velocity.y += stats.jump_gravity_down * delta
+	if Input.is_action_pressed('player_jump'):
+		character.velocity.y += stats.jump_gravity_down_gliding * delta
+		if character.velocity.y >= stats.max_speed_from_gravity_gliding:
+			character.velocity.y = stats.max_speed_from_gravity_gliding
+	else:
+		character.velocity.y += stats.jump_gravity_down * delta
+		if character.velocity.y >= stats.max_speed_from_gravity:
+			character.velocity.y = stats.max_speed_from_gravity
 
 func apply_directional_movement(delta:float) -> void:
 	grounded.apply_directional_movement(delta)
