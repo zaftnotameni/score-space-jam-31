@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 func spawn_furniture(location : Vector2 = last_furniture_position) -> void:
 	var furniture_instance = FURNITURE.instantiate()
 	add_child(furniture_instance)
-	furniture_instance.position.y = position.y
+	furniture_instance.global_position.y = position.y
 	furniture_instance.position.x = location.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin
 	furniture_instance.visible_on_screen_notifier_2d.screen_entered.connect(_furniture_entered_screen.bind(furniture_instance))
 	last_furniture_position = furniture_instance.position
