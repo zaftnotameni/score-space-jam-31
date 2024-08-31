@@ -8,12 +8,20 @@ class_name PlayerMovementSwinging extends Node2D
 @onready var grounded := PlayerMovementGrounded.first()
 
 var is_jump : bool
+var previous_velocity := Vector2.ZERO
 
 func on_state_exit(_next:Node=null) -> void:
 	is_jump = false
+	previous_velocity = Vector2.ZERO
 
 func on_state_enter(_prev:Node=null) -> void:
 	is_jump = false
+	character.global_position.x = character.get_meta('grabbed_lamp_x', 0.0)
+	character.global_position.y = character.get_meta('grabbed_lamp_y', 0.0)
+	character.remove_meta('grabbed_lamp_x')
+	character.remove_meta('grabbed_lamp_y')
+	previous_velocity = character.velocity
+	character.velocity = Vector2.ZERO
 
 func apply_gravity(_delta:float) -> void:
 	pass
