@@ -56,7 +56,7 @@ static func change_level_state_to_lava():
 	if audio:
 		var level_bgm : AudioStreamPlayer = audio.get_node('BGM/Level')
 		var synchro : AudioStreamSynchronized = level_bgm.stream
-		synchro.set_sync_stream_volume(1, 0)
+		synchro.set_sync_stream_volume(1, 2)
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)

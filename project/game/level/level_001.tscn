@@ -83,9 +83,6 @@ script = ExtResource("14_tu8cc")
 script = ExtResource("15_yrv1a")
 song = "level"
 
-[node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
-position = Vector2(474, 704)
-
 [node name="Lamp" parent="." instance=ExtResource("14_kwx83")]
 position = Vector2(1675, 0)
 
@@ -116,13 +113,16 @@ shadow_color = Color(0, 0, 0, 0.572549)
 shadow_item_cull_mask = 6
 
 [node name="Furniture" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(-352, 736)
+position = Vector2(-352, 700)
 
 [node name="Furniture2" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(160, 736)
+position = Vector2(160, 679)
 
 [node name="Furniture3" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(752, 608)
+position = Vector2(752, 572)
 
 [node name="Furniture4" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(1440, 592)
+position = Vector2(1440, 556)
+
+[node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
+position = Vector2(474, 704)

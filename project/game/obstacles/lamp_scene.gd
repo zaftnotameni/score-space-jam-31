@@ -1,6 +1,7 @@
 class_name LampScene extends Node2D
 
 @onready var grab_area : Area2D = %GrabArea
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
 
 func grab(character:CharacterScene, movement_machine:MovementMachine):
 	character.set_meta('lamp_selector', get_path())
@@ -29,5 +30,3 @@ static func all() -> Array: return tree().get_nodes_in_group(GROUP)
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)
-
-
