@@ -1,16 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b30g6r2vwk6q8"]
 
 [ext_resource type="Script" path="res://game/level/furniture_manager.gd" id="1_oljml"]
-[ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/level/furniture.tscn" id="2_omrws"]
+[ext_resource type="Texture2D" uid="uid://dn3pf0nl7t10a" path="res://icon.svg" id="2_uam0s"]
 
-[node name="FurnitureManager" type="Node"]
+[node name="FurnitureManager" type="Node2D"]
 script = ExtResource("1_oljml")
 
-[node name="FurnitureSpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="FurnitureSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1880, 658)
 
-[node name="Furniture" parent="." instance=ExtResource("2_omrws")]
-position = Vector2(-287, 802)
+[node name="SpawnPointDebuggingVisual" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_uam0s")

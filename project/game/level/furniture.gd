@@ -1,5 +1,8 @@
 class_name Furniture extends CharacterBody2D
 
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 func _enter_tree() -> void:
 	add_to_group(GROUP)
 
