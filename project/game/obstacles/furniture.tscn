@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b67t7a0hpaa0o"]
 
-[ext_resource type="Script" path="res://game/level/furniture.gd" id="1_hg7hj"]
+[ext_resource type="Script" path="res://game/obstacles/furniture_scene.gd" id="1_hg7hj"]
 [ext_resource type="PackedScene" uid="uid://nu5va1j5pndw" path="res://game/level/start_level.tscn" id="2_vvlub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54ywe"]

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b30g6r2vwk6q8"]
-
-[ext_resource type="Script" path="res://game/level/furniture_manager.gd" id="1_oljml"]
-
-[node name="FurnitureManager" type="Marker2D"]
-script = ExtResource("1_oljml")

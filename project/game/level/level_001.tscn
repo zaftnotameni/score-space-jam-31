@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=21 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
 [ext_resource type="PackedScene" uid="uid://cex1musqut48y" path="res://game/level/background_lava.tscn" id="1_skaoa"]
@@ -13,11 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://bbtcq5lasw64p" path="res://game/obstacles/lamp.tscn" id="14_kwx83"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
 [ext_resource type="Script" path="res://addons/game_manager/layers/at/hud.gd" id="15_5qp0k"]
-[ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/furniture_manager/furniture_manager.tscn" id="15_j8bh3"]
+[ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/obstacles/obstacle_spawner.tscn" id="15_j8bh3"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="15_yrv1a"]
 [ext_resource type="PackedScene" uid="uid://d2are6hf3fmw5" path="res://game/score/score_hud.tscn" id="16_klgqa"]
 [ext_resource type="Script" path="res://game/behavior/accumulates_score_as_player_moves.gd" id="17_l5ndh"]
 [ext_resource type="Script" path="res://game/behavior/resets_current_score.gd" id="18_cx11n"]
+[ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/obstacles/furniture.tscn" id="19_s0um8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a75d6"]
 
@@ -86,12 +87,13 @@ song = "level"
 position = Vector2(474, 704)
 
 [node name="Lamp" parent="." instance=ExtResource("14_kwx83")]
+position = Vector2(1675, 0)
 
 [node name="Lamp2" parent="." instance=ExtResource("14_kwx83")]
 position = Vector2(456, 0)
 
 [node name="Lamp3" parent="." instance=ExtResource("14_kwx83")]
-position = Vector2(1232, 0)
+position = Vector2(1120, 0)
 
 [node name="AtHUD" type="Node" parent="."]
 script = ExtResource("15_5qp0k")
@@ -112,3 +114,15 @@ range_item_cull_mask = 6
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.572549)
 shadow_item_cull_mask = 6
+
+[node name="Furniture" parent="." instance=ExtResource("19_s0um8")]
+position = Vector2(-352, 736)
+
+[node name="Furniture2" parent="." instance=ExtResource("19_s0um8")]
+position = Vector2(160, 736)
+
+[node name="Furniture3" parent="." instance=ExtResource("19_s0um8")]
+position = Vector2(752, 608)
+
+[node name="Furniture4" parent="." instance=ExtResource("19_s0um8")]
+position = Vector2(1440, 592)

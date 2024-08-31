@@ -162,6 +162,7 @@ player_jump={
 2d_render/layer_1="generic"
 2d_render/layer_2="player_body"
 2d_render/layer_3="furniture"
+2d_render/layer_4="lamp"
 2d_physics/layer_1="generic_do_not_use"
 2d_physics/layer_2="player_character_body"
 2d_physics/layer_3="platforms"
