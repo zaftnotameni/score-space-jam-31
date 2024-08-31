@@ -19,6 +19,8 @@ class_name CameraFollowsPlayer extends Node
 @export var camera : Camera2D
 ## Group of the tilemap layer to use for defining camera boundaries
 @export var tilemap_layer_group : StringName
+## Group of the floor to use for defining camera boundaries
+@export var floor_group : StringName = 'floor_scene'
 ## Group of the player to use for resolving the player
 @export var player_group: StringName = 'character_scene'
 
@@ -105,6 +107,22 @@ var max_x : float = -1000000
 var max_y : float = -1000000
 
 func setup_boundaries():
+	setup_floor_boundaries()
+
+func setup_floor_boundaries():
+	if not floor_group or floor_group.is_empty(): return
+
+	var floor := get_tree().get_first_node_in_group(floor_group) as StaticBody2D
+	if not floor: return
+
+	for child in floor.get_children():
+		var sprite := child as Sprite2D
+		if not sprite: continue
+		var glopos := sprite.global_position + (sprite.get_rect().size * 0.5)
+		max_y = max(max_y, glopos.y)
+		camera.limit_bottom = roundi(max_y)
+
+func setup_tilemap_boundaries():
 	if not tilemap_layer_group or tilemap_layer_group.is_empty(): return
 
 	var layer := get_tree().get_first_node_in_group(tilemap_layer_group) as TileMapLayer

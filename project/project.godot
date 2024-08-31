@@ -167,6 +167,7 @@ player_jump={
 2d_physics/layer_6="swingable_objects"
 2d_physics/layer_7="spawner_point"
 2d_physics/layer_8="level_start"
+2d_physics/layer_9="floor"
 
 [physics]
 

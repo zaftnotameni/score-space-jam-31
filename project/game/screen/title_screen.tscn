@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfjend8sgr2kt"]
+[gd_scene load_steps=16 format=3 uid="uid://dfjend8sgr2kt"]
 
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_73ac8"]
 [ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="1_atoyw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_level_001.gd" id="7_7rbdx"]
 [ext_resource type="PackedScene" uid="uid://bif5qxjxk5kgv" path="res://game/screen/leaderboard_screen.tscn" id="7_dctll"]
 [ext_resource type="PackedScene" uid="uid://xbd4itexu6o8" path="res://game/screen/about_screen.tscn" id="8_io3rl"]
+[ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="13_fr0pt"]
 
 [sub_resource type="Gradient" id="Gradient_mxklf"]
 
@@ -117,3 +118,7 @@ script = ExtResource("5_sjv7u")
 [node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/About"]
 script = ExtResource("6_4il7w")
 menu_scene = ExtResource("8_io3rl")
+
+[node name="RequestsSong" type="Node" parent="."]
+script = ExtResource("13_fr0pt")
+song = "title"

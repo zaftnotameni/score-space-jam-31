@@ -39,7 +39,7 @@ func initialize():
 	jump_buffer_timing = 0.1
 	jump_time_to_peak = 0.6
 	jump_time_to_land = 0.3
-	jump_height = 2 * player_size.y
+	jump_height = 3 * player_size.y
 	run_kinematic_equations()
 
 func run_kinematic_equations():

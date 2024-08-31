@@ -16,7 +16,7 @@ fill_from = Vector2(1, 0)
 fill_to = Vector2(1, 1)
 
 [node name="Floor" type="StaticBody2D"]
-collision_layer = 4
+collision_layer = 256
 collision_mask = 2
 script = ExtResource("1_wtaqe")
 

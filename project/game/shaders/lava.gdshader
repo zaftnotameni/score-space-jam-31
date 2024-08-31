@@ -59,5 +59,5 @@ void fragment() {
 	vec3 col = vec3(.42, .17, .01) / rz;
 	col = pow(col, vec3(1.4));
 	
-	COLOR = vec4(col, max(UV.y, 0.8));
+	COLOR = vec4(col, max(UV.y, 1.0));
 }
