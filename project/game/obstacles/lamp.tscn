@@ -62,6 +62,9 @@ texture = SubResource("GradientTexture2D_xt63y")
 occluder = SubResource("OccluderPolygon2D_guek4")
 occluder_light_mask = 8
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
+unique_name_in_owner = true
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, 128)
 texture = SubResource("GradientTexture2D_0r776")

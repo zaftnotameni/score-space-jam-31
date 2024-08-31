@@ -15,7 +15,6 @@ var potential_furniture_sizes : Array[Vector2i] = [
 func _ready() -> void:
 	if not sprite_2d: return
 	if not collision: return
-	occluder.add_child(collision.duplicate())
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)

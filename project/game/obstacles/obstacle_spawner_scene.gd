@@ -27,7 +27,6 @@ func smart_spawn_first_obstacle():
 	else:
 		spawn_furniture()
 
-
 func on_level_state_changed():
 	var level_state := LevelState.first()
 	if not level_state: push_error('missing level state'); return
@@ -40,20 +39,17 @@ func _physics_process(delta: float) -> void:
 		furniture.position.x -= furniture_speed * delta
 		furniture.position.y += sink_speed * delta
 
-func spawn_furniture(location : Vector2 = Vector2.ZERO) -> void:
+func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZERO) -> void:
 	var furniture_instance = furniture_scene.instantiate()
 	
 	add_child(furniture_instance)
 	
-	furniture_instance.position.x = location.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin
+	furniture_instance.position.x = local_position_of_previous_obstacle.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin
 	furniture_instance.rotate(randf_range(minimum_angle, maximum_angle))
 	var notifier := furniture_instance.visible_on_screen_notifier_2d as VisibleOnScreenNotifier2D
 	if not notifier: push_error('no notifier'); return
 
 	notifier.screen_entered.connect(_furniture_entered_screen.bind(furniture_instance), CONNECT_ONE_SHOT)
-	
-	print_verbose("input: ",location, " + ", location.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin)
-	print_verbose("Furniture local: ", furniture_instance.position, " | Furniture Global: ",furniture_instance.global_position)
 
 func _furniture_entered_screen(furniture : FurnitureScene) -> void:
 	spawn_furniture(furniture.position)
