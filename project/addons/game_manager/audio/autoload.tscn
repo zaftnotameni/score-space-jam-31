@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://addons/game_manager/audio/autoload.gd" id="1_fcb7v"]
 [ext_resource type="AudioStream" uid="uid://bja7v8xihixmn" path="res://addons/game_manager/audio/sounds/ui/bfxr_blip.wav" id="2_pfvij"]
-[ext_resource type="AudioStream" uid="uid://4njmb0celfch" path="res://addons/game_manager/audio/sounds/ui/bfxr_focus.wav" id="3_gtwy6"]
 [ext_resource type="AudioStream" uid="uid://dbj3ddvojwp00" path="res://assets/audio/music/budgetsuperhero.ogg" id="3_u4em6"]
 [ext_resource type="AudioStream" uid="uid://dkcbfeap1713b" path="res://assets/audio/music/gameovermaybe.wav" id="4_44uds"]
-[ext_resource type="AudioStream" uid="uid://c22uiel8i41rk" path="res://addons/game_manager/audio/sounds/ui/bfxr_press.wav" id="4_fx3jr"]
 [ext_resource type="AudioStream" uid="uid://bvymv2icr63xk" path="res://assets/audio/music/menumusic.wav" id="5_kts0d"]
+[ext_resource type="AudioStream" uid="uid://d2pj2swf5072m" path="res://assets/audio/sfx/buttonFocus.wav" id="6_6r5tf"]
+[ext_resource type="AudioStream" uid="uid://bjmb3ijdn0rj1" path="res://assets/audio/sfx/buttonPress.wav" id="7_a76b5"]
 
 [node name="Audio" type="Node2D"]
 script = ExtResource("1_fcb7v")
@@ -50,9 +50,9 @@ stream = ExtResource("2_pfvij")
 bus = &"UI"
 
 [node name="Focus" type="AudioStreamPlayer" parent="UI"]
-stream = ExtResource("3_gtwy6")
+stream = ExtResource("6_6r5tf")
 bus = &"UI"
 
 [node name="Press" type="AudioStreamPlayer" parent="UI"]
-stream = ExtResource("4_fx3jr")
+stream = ExtResource("7_a76b5")
 bus = &"UI"

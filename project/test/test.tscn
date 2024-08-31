@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3jk4fk4vbn7b"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_dynes"]
-[ext_resource type="PackedScene" uid="uid://dlj1q8hqk0gxa" path="res://game/level/lava_and_floor.tscn" id="2_ve8p1"]
+[ext_resource type="PackedScene" uid="uid://dhmkqicg6bfyp" path="res://game/level/lava_and_floor.tscn" id="2_ve8p1"]
 [ext_resource type="PackedScene" uid="uid://bsvjn4whb84da" path="res://game/player/character.tscn" id="3_umc0a"]
 [ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_xbbnk"]
 [ext_resource type="PackedScene" uid="uid://bbtcq5lasw64p" path="res://game/obstacles/lamp.tscn" id="5_akcun"]
@@ -23,3 +23,9 @@ script = ExtResource("4_xbbnk")
 
 [node name="Node2D" parent="." instance=ExtResource("5_akcun")]
 position = Vector2(490, 185)
+
+[node name="Node2D2" parent="." instance=ExtResource("5_akcun")]
+position = Vector2(1568, 172)
+
+[node name="Node2D3" parent="." instance=ExtResource("5_akcun")]
+position = Vector2(1091, 147)

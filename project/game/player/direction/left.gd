@@ -8,6 +8,7 @@ class_name PlayerDirectionLeft extends Node2D
 @onready var visuals := PlayerVisual.first()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if machine_movement.current_state_id() == PlayerEnums.Movement.SWINGING: return
 	if event.is_action_pressed('player_right'):
 		machine_direction.transition(PlayerEnums.Direction.RIGHT, 'flip')
 
