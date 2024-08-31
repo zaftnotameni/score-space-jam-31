@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://f34duj01d1it"]
+[gd_scene load_steps=10 format=3 uid="uid://f34duj01d1it"]
 
 [ext_resource type="Script" path="res://game/behavior/quits_to_title.gd" id="1_mqvfj"]
-[ext_resource type="Material" uid="uid://cwidbqg7ekcfh" path="res://generated/materials/lava_material.tres" id="1_thohv"]
+[ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="1_thohv"]
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_title_screen.gd" id="2_i1n12"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="2_vqctg"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="3_rr3if"]
 [ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="4_hp366"]
+[ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="7_jdauv"]
 
 [sub_resource type="Gradient" id="Gradient_mxklf"]
 
@@ -60,3 +61,7 @@ script = ExtResource("3_rr3if")
 
 [node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/Button"]
 script = ExtResource("4_hp366")
+
+[node name="RequestsSong" type="Node" parent="."]
+script = ExtResource("7_jdauv")
+song = "game_over"

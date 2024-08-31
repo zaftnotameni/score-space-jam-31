@@ -29,7 +29,7 @@ func apply_gravity(_delta:float) -> void:
 func apply_directional_movement(_delta:float) -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	is_jump = input.is_jump_requested()
 
 const GROUP := 'player_movement_swinging'

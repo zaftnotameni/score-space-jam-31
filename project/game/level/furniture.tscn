@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b67t7a0hpaa0o"]
+[gd_scene load_steps=6 format=3 uid="uid://b67t7a0hpaa0o"]
 
 [ext_resource type="Script" path="res://game/level/furniture.gd" id="1_hg7hj"]
+[ext_resource type="PackedScene" uid="uid://nu5va1j5pndw" path="res://game/level/start_level.tscn" id="2_vvlub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54ywe"]
 size = Vector2(320, 320)
@@ -27,3 +28,6 @@ texture = SubResource("GradientTexture2D_mo0qu")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-2.50002, 7.62939e-06)
 scale = Vector2(16.15, 16.1)
+
+[node name="StartLevel" parent="." instance=ExtResource("2_vvlub")]
+position = Vector2(0, -224)

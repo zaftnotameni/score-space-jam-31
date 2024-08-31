@@ -10,21 +10,31 @@ func on_named_song_start_requested(named_song:String):
 	match named_song:
 		'none':
 			Audio.first().get_node('BGM/Level').stop()
+			Audio.first().get_node('BGM/GameOver').stop()
+			Audio.first().get_node('BGM/Menu').stop()
 		'title':
 			Audio.first().get_node('BGM/Level').stop()
+			Audio.first().get_node('BGM/GameOver').stop()
+			Audio.play_bgm(Audio.first().get_node('BGM/Menu'))
 		'level':
+			Audio.first().get_node('BGM/GameOver').stop()
+			Audio.first().get_node('BGM/Menu').stop()
 			Audio.play_bgm(Audio.first().get_node('BGM/Level'))
 		'game_over':
 			Audio.first().get_node('BGM/Level').stop()
+			Audio.first().get_node('BGM/Menu').stop()
+			Audio.play_bgm(Audio.first().get_node('BGM/GameOver'))
 
 func on_named_song_stop_requested(named_song:String):
 	if not Audio.first(): return
 	match named_song:
 		'none': pass
-		'title': pass
+		'title':
+			Audio.first().get_node('BGM/Menu').stop()
 		'level':
 			Audio.first().get_node('BGM/Level').stop()
-		'game_over': pass
+		'game_over':
+			Audio.first().get_node('BGM/GameOver').stop()
 
 func _ready() -> void:
 	if Audio.first():

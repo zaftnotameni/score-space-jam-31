@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck5nly71iwpkd"]
+[gd_scene load_steps=8 format=3 uid="uid://ck5nly71iwpkd"]
 
 [ext_resource type="Script" path="res://addons/game_manager/audio/autoload.gd" id="1_fcb7v"]
 [ext_resource type="AudioStream" uid="uid://bja7v8xihixmn" path="res://addons/game_manager/audio/sounds/ui/bfxr_blip.wav" id="2_pfvij"]
-[ext_resource type="AudioStream" uid="uid://8sfmklu8orck" path="res://assets/audio/music/budgetsuperhero.wav" id="3_7bfg3"]
 [ext_resource type="AudioStream" uid="uid://4njmb0celfch" path="res://addons/game_manager/audio/sounds/ui/bfxr_focus.wav" id="3_gtwy6"]
+[ext_resource type="AudioStream" uid="uid://dbj3ddvojwp00" path="res://assets/audio/music/budgetsuperhero.ogg" id="3_u4em6"]
+[ext_resource type="AudioStream" uid="uid://dkcbfeap1713b" path="res://assets/audio/music/gameovermaybe.wav" id="4_44uds"]
 [ext_resource type="AudioStream" uid="uid://c22uiel8i41rk" path="res://addons/game_manager/audio/sounds/ui/bfxr_press.wav" id="4_fx3jr"]
+[ext_resource type="AudioStream" uid="uid://bvymv2icr63xk" path="res://assets/audio/music/menumusic.wav" id="5_kts0d"]
 
 [node name="Audio" type="Node2D"]
 script = ExtResource("1_fcb7v")
@@ -21,7 +23,17 @@ stream = ExtResource("2_pfvij")
 bus = &"BGM"
 
 [node name="Level" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("3_7bfg3")
+stream = ExtResource("3_u4em6")
+bus = &"BGM"
+playback_type = 1
+
+[node name="GameOver" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("4_44uds")
+bus = &"BGM"
+playback_type = 1
+
+[node name="Menu" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("5_kts0d")
 bus = &"BGM"
 playback_type = 1
 

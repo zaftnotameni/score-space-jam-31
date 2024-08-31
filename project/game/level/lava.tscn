@@ -6,11 +6,11 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ne501"]
 distance = 24.0
 
-[sub_resource type="Gradient" id="Gradient_ujvx2"]
+[sub_resource type="Gradient" id="Gradient_hgh7m"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.960938, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pj6lc"]
-gradient = SubResource("Gradient_ujvx2")
+gradient = SubResource("Gradient_hgh7m")
 width = 2400
 height = 192
 fill_from = Vector2(1, 1)
