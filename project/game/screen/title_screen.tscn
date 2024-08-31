@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dfjend8sgr2kt"]
 
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_73ac8"]
-[ext_resource type="Material" uid="uid://cwidbqg7ekcfh" path="res://generated/materials/lava_material.tres" id="1_atoyw"]
+[ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="1_atoyw"]
 [ext_resource type="Script" path="res://addons/game_manager/state/in/title.gd" id="2_w11x5"]
 [ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="3_jyfl5"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="4_5xyqm"]
@@ -47,6 +47,7 @@ wipe_state_stack = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -7,7 +7,8 @@
 
 [node name="LavaParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 1)
-scroll_offset = Vector2(0, 64)
+scroll_offset = Vector2(0, 128)
+repeat_times = 2
 
 [node name="Lava" parent="LavaParallax" instance=ExtResource("1_vxxx1")]
 

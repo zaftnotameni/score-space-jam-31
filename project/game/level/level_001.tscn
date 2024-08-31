@@ -1,33 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=15 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
-[ext_resource type="Script" path="res://game/level/level_tooler.gd" id="1_v2otw"]
-[ext_resource type="Script" path="res://game/player/spawner.gd" id="2_pifs8"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
 [ext_resource type="PackedScene" uid="uid://bsvjn4whb84da" path="res://game/player/character.tscn" id="3_n8apo"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauseable.gd" id="3_p86jh"]
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_pause_screen.gd" id="4_fyj6n"]
 [ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_gkftf"]
 [ext_resource type="PackedScene" uid="uid://blcn8ouedmnvf" path="res://game/screen/pause_screen.tscn" id="8_2esjf"]
-[ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/level/furniture.tscn" id="10_nn2ek"]
+[ext_resource type="Script" path="res://game/level/furniture_killer.gd" id="8_qkxgf"]
 [ext_resource type="PackedScene" uid="uid://nu5va1j5pndw" path="res://game/level/start_level.tscn" id="13_gaytk"]
 [ext_resource type="PackedScene" uid="uid://dhmkqicg6bfyp" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
 [ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/furniture_manager/furniture_manager.tscn" id="15_j8bh3"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="15_yrv1a"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a75d6"]
+
 [node name="Level001" type="Node2D"]
 process_mode = 1
-
-[node name="LevelTooler" type="Node" parent="."]
-script = ExtResource("1_v2otw")
-
-[node name="PlayerSpawner" type="Area2D" parent="."]
-position = Vector2(219, 346)
-script = ExtResource("2_pifs8")
-active = true
-scene = ExtResource("3_n8apo")
-metadata/created_via_tool_script = true
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera2D" parent="."]
 process_callback = 0
@@ -35,6 +26,7 @@ metadata/created_via_tool_script = true
 
 [node name="CameraFollowsPlayer" type="Node" parent="Camera"]
 script = ExtResource("4_gkftf")
+follow_factor = 500.0
 metadata/created_via_tool_script = true
 
 [node name="StateGame" type="Node" parent="."]
@@ -54,22 +46,29 @@ metadata/created_via_tool_script = true
 script = ExtResource("4_fyj6n")
 metadata/created_via_tool_script = true
 
-[node name="Furniture" parent="." instance=ExtResource("10_nn2ek")]
-position = Vector2(1246, 766)
+[node name="Character" parent="." instance=ExtResource("3_n8apo")]
+position = Vector2(-566, 164)
 
-[node name="Furniture2" parent="." instance=ExtResource("10_nn2ek")]
-position = Vector2(713, 695)
+[node name="FurnitureKiller" type="Area2D" parent="."]
+position = Vector2(156, 1295)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_qkxgf")
 
-[node name="Furniture3" parent="." instance=ExtResource("10_nn2ek")]
-position = Vector2(232, 749)
+[node name="WorldBoundaryShape" type="CollisionShape2D" parent="FurnitureKiller"]
+shape = SubResource("WorldBoundaryShape2D_a75d6")
 
-[node name="Furniture4" parent="." instance=ExtResource("10_nn2ek")]
-position = Vector2(-276, 788)
+[node name="FurnitureManager" parent="." instance=ExtResource("15_j8bh3")]
+position = Vector2(-1030, 621)
+furniture_margin = 200.0
+furniture_speed = 0.0
+sink_speed = 15.0
 
 [node name="StartLevel" parent="." instance=ExtResource("13_gaytk")]
-position = Vector2(-274, 621)
+position = Vector2(-567, 455)
 
 [node name="LevelState" type="Node2D" parent="."]
+position = Vector2(221, -14)
 script = ExtResource("14_tu8cc")
 
 [node name="RequestsSong" type="Node" parent="."]
@@ -78,8 +77,3 @@ song = "level"
 
 [node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
 position = Vector2(474, 704)
-
-[node name="FurnitureManager" parent="." instance=ExtResource("15_j8bh3")]
-position = Vector2(1652, 618)
-furniture_margin = 400.0
-furniture_speed = 100.0
