@@ -1,13 +1,26 @@
 class_name ClosesMenu extends Node
 
+var title_scene := load('res://game/screen/title_screen.tscn')
+
 func close_target():
 	if not target_menu: return
 
+	var title : Node
 	var path := target_menu.get_meta('opened_by', '')
-	if not path: target_menu.queue_free(); return
+	if not path:
+		if State.is_initial():
+			title = title_scene.instantiate()
+			Layers.layer_menu().add_child(title)
+		else:
+			target_menu.queue_free(); return
 
-	var opener := get_tree().current_scene.get_node_or_null(path)
-	if not opener: target_menu.queue_free(); return
+	printt(get_tree(), get_tree().current_scene)
+	var opener := get_tree().current_scene.get_node_or_null(path) if path else title
+	if not opener:
+		if State.is_initial():
+			opener = title
+		else:
+			target_menu.queue_free(); return
 
 	var tween : Tween
 	tween = TweenUtil.tween_ignores_pause(TweenUtil.tween_fresh_eased_in_out_cubic(tween))
@@ -36,6 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func find_closeable_parent(n:Node=self) -> Node:
 	if TARGET_GROUPS.any(n.is_in_group): return n
 	if TARGET_META.any(n.has_meta): return n
+	if n is PanelContainer: return n
 	return owner
 
 const TARGET_GROUPS = [

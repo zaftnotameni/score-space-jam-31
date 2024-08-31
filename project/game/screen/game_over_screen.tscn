@@ -1,12 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://f34duj01d1it"]
+[gd_scene load_steps=14 format=3 uid="uid://f34duj01d1it"]
 
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_g03ol"]
 [ext_resource type="Script" path="res://game/behavior/quits_to_title.gd" id="1_mqvfj"]
 [ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="1_thohv"]
-[ext_resource type="Script" path="res://game/behavior/sets_target_as_title_screen.gd" id="2_i1n12"]
+[ext_resource type="Script" path="res://addons/game_manager/state/in/victory.gd" id="2_dglrq"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="2_vqctg"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="3_rr3if"]
+[ext_resource type="Script" path="res://game/behavior/shows_current_distance.gd" id="4_c73f8"]
 [ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="4_hp366"]
+[ext_resource type="Script" path="res://game/behavior/sets_target_as_leaderboards_screen.gd" id="6_1imhn"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="7_jdauv"]
+[ext_resource type="Script" path="res://game/behavior/publishes_high_score.gd" id="10_piw3t"]
 
 [sub_resource type="Gradient" id="Gradient_mxklf"]
 
@@ -25,6 +29,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Unpauseable" type="Node" parent="."]
+script = ExtResource("1_g03ol")
+
+[node name="StateVictory" type="Node" parent="."]
+script = ExtResource("2_dglrq")
+wipe_state_stack = true
+
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource("1_thohv")
 custom_minimum_size = Vector2(0, 768)
@@ -39,19 +50,54 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.94902, 0.905882, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0.85098, 0.494118, 0.0862745, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 192
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Preamble" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.94902, 0.905882, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0.85098, 0.494118, 0.0862745, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 160
+text = "You managed to go for:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.94902, 0.905882, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0.85098, 0.494118, 0.0862745, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 192
+text = "0m"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShowsCurrentDistance" type="Node" parent="MarginContainer/VBoxContainer/Score"]
+script = ExtResource("4_c73f8")
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Back to Title"
+text = "Check the Leaderboards"
 
 [node name="QuitsToTitle" type="Node" parent="MarginContainer/VBoxContainer/Button"]
 script = ExtResource("1_mqvfj")
 
-[node name="SetsTargetAsTitleScreen" type="Node" parent="MarginContainer/VBoxContainer/Button/QuitsToTitle"]
-script = ExtResource("2_i1n12")
+[node name="SetsTargetAsLeaderboardsScreen" type="Node" parent="MarginContainer/VBoxContainer/Button/QuitsToTitle"]
+script = ExtResource("6_1imhn")
 
 [node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Button"]
 script = ExtResource("2_vqctg")
@@ -65,3 +111,6 @@ script = ExtResource("4_hp366")
 [node name="RequestsSong" type="Node" parent="."]
 script = ExtResource("7_jdauv")
 song = "game_over"
+
+[node name="PublishesHighScore" type="Node" parent="."]
+script = ExtResource("10_piw3t")

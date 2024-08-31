@@ -60,12 +60,10 @@ func apply_directional_movement(delta:float) -> void:
 func apply_jump(_delta:float) -> void:
 	var speed := base_jump_off_speed * rotation_speed
 	var direction := Vector2.ZERO
-	match machine_direction.current_state_id():
-		PlayerEnums.Direction.RIGHT:
-			direction = Vector2.RIGHT.rotated(lamp.rotation)
-
-		PlayerEnums.Direction.LEFT:
-			direction = Vector2.LEFT.rotated(lamp.rotation)
+	if lamp.rotation < 0:
+		direction = Vector2.RIGHT.rotated(lamp.rotation)
+	if lamp.rotation > 0:
+		direction = Vector2.LEFT.rotated(lamp.rotation)
 	
 	character.velocity = direction * speed
 	character.move_and_slide()

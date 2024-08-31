@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2are6hf3fmw5"]
+
+[ext_resource type="Script" path="res://game/score/score_hud_scene.gd" id="1_kvswr"]
+[ext_resource type="Script" path="res://game/behavior/shows_current_distance.gd" id="2_vi6et"]
+
+[node name="ScoreHUD" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 102.0
+grow_horizontal = 0
+script = ExtResource("1_kvswr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0m"
+
+[node name="ShowsCurrentTime" type="Node" parent="MarginContainer/Label"]
+script = ExtResource("2_vi6et")
