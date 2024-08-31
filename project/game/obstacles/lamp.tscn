@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbtcq5lasw64p"]
+[gd_scene load_steps=10 format=3 uid="uid://bbtcq5lasw64p"]
 
 [ext_resource type="Script" path="res://game/obstacles/lamp_scene.gd" id="1_qo4fg"]
 
@@ -12,6 +12,17 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tywv0"]
 size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_t53t1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xt63y"]
+gradient = SubResource("Gradient_t53t1")
+width = 128
+height = 128
+fill_from = Vector2(1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_guek4"]
+polygon = PackedVector2Array(16, 16, 16, -3, -16, -3, -16, 16, 1, 5)
 
 [sub_resource type="Gradient" id="Gradient_bwbal"]
 
@@ -37,7 +48,19 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_tywv0")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(1, -128)
+position = Vector2(1, 61)
+color = Color(0.94902, 0.905882, 0.286275, 1)
+range_layer_min = -20
+range_layer_max = 20
+range_item_cull_mask = 14
+shadow_enabled = true
+shadow_color = Color(0.2, 0.0509804, 0.0627451, 1)
+shadow_item_cull_mask = 6
+texture = SubResource("GradientTexture2D_xt63y")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_guek4")
+occluder_light_mask = 8
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, 128)
