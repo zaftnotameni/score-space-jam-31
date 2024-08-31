@@ -3,8 +3,7 @@ class_name LampScene extends Node2D
 @onready var grab_area : Area2D = %GrabArea
 
 func grab(character:CharacterScene, movement_machine:MovementMachine):
-	character.set_meta('grabbed_lamp_x', grab_area.global_position.x)
-	character.set_meta('grabbed_lamp_y', grab_area.global_position.y)
+	character.set_meta('lamp_selector', get_path())
 	movement_machine.transition(PlayerEnums.Movement.SWINGING, 'grabbed-lamp')
 
 func on_character_entered(character:CharacterScene):
