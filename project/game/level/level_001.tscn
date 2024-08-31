@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=17 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
 [ext_resource type="Script" path="res://game/level/level_tooler.gd" id="1_v2otw"]
@@ -11,9 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://blcn8ouedmnvf" path="res://game/screen/pause_screen.tscn" id="8_2esjf"]
 [ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/level/furniture.tscn" id="10_nn2ek"]
 [ext_resource type="PackedScene" uid="uid://nu5va1j5pndw" path="res://game/level/start_level.tscn" id="13_gaytk"]
-[ext_resource type="PackedScene" uid="uid://dlj1q8hqk0gxa" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
+[ext_resource type="PackedScene" uid="uid://dhmkqicg6bfyp" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
+[ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/furniture_manager/furniture_manager.tscn" id="15_j8bh3"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="15_yrv1a"]
+[ext_resource type="Texture2D" uid="uid://dn3pf0nl7t10a" path="res://icon.svg" id="16_lisjq"]
 
 [node name="Level001" type="Node2D"]
 process_mode = 1
@@ -22,13 +24,14 @@ process_mode = 1
 script = ExtResource("1_v2otw")
 
 [node name="PlayerSpawner" type="Area2D" parent="."]
-position = Vector2(-28, 678)
+position = Vector2(219, 346)
 script = ExtResource("2_pifs8")
 active = true
 scene = ExtResource("3_n8apo")
 metadata/created_via_tool_script = true
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
 process_callback = 0
 metadata/created_via_tool_script = true
 
@@ -77,3 +80,13 @@ song = "level"
 
 [node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
 position = Vector2(474, 704)
+
+[node name="FurnitureManager" parent="." instance=ExtResource("15_j8bh3")]
+position = Vector2(1652, 618)
+furniture_speed = 100.0
+
+[node name="SpawnPointVisual" type="Sprite2D" parent="."]
+modulate = Color(0.580392, 0.0862745, 0.670588, 1)
+position = Vector2(1653, 618)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("16_lisjq")
