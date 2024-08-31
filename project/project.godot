@@ -183,6 +183,6 @@ anti_aliasing/screen_space_roughness_limiter/enabled=false
 environment/glow/upscale_mode=0
 environment/screen_space_reflection/roughness_quality=0
 environment/subsurface_scattering/subsurface_scattering_quality=0
-environment/defaults/default_clear_color=Color(0.054902, 0.0117647, 0.0784314, 1)
+environment/defaults/default_clear_color=Color(0.814121, 0.706408, 0.499132, 1)
 viewport/hdr_2d=true
 environment/defaults/default_environment="res://addons/project_defaults/world/default_world_environment.tres"

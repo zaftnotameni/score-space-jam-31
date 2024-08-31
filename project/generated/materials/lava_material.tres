@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cwidbqg7ekcfh"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d04y5jfo0rqp"]
 
 [ext_resource type="Shader" path="res://game/shaders/lava.gdshader" id="1_d60no"]
 
