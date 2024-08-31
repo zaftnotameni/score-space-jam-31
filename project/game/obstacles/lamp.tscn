@@ -36,6 +36,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/GrabArea"]
 shape = SubResource("RectangleShape2D_tywv0")
 
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(1, -128)
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, 128)
 texture = SubResource("GradientTexture2D_0r776")

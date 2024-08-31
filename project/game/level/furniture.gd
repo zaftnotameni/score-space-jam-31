@@ -3,6 +3,7 @@ class_name Furniture extends CharacterBody2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var occluder: LightOccluder2D = $LightOccluder2D
 
 var potential_furniture_sizes : Array[Vector2i] = [
 	Vector2i(320, 320),
@@ -14,6 +15,7 @@ var potential_furniture_sizes : Array[Vector2i] = [
 func _ready() -> void:
 	if not sprite_2d: return
 	if not collision: return
+	occluder.add_child(collision.duplicate())
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)
