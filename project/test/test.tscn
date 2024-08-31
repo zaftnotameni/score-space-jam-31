@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3jk4fk4vbn7b"]
+[gd_scene load_steps=9 format=3 uid="uid://b3jk4fk4vbn7b"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_dynes"]
+[ext_resource type="PackedScene" uid="uid://dlj1q8hqk0gxa" path="res://game/level/lava_and_floor.tscn" id="2_ve8p1"]
+[ext_resource type="PackedScene" uid="uid://bsvjn4whb84da" path="res://game/player/character.tscn" id="3_umc0a"]
+[ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_xbbnk"]
+
+[sub_resource type="Gradient" id="Gradient_08qlb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ukmab"]
+gradient = SubResource("Gradient_08qlb")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_bwbal"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0r776"]
+gradient = SubResource("Gradient_bwbal")
+width = 2
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_dynes")
+
+[node name="LavaAndFloor" parent="." instance=ExtResource("2_ve8p1")]
+position = Vector2(597, 677)
+
+[node name="Character" parent="." instance=ExtResource("3_umc0a")]
+position = Vector2(176, 404)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="CameraFollowsPlayer" type="Node" parent="Camera2D"]
+script = ExtResource("4_xbbnk")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(336, 514)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1, 72)
+texture = SubResource("GradientTexture2D_ukmab")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 32)
+texture = SubResource("GradientTexture2D_0r776")
