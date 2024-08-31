@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://f34duj01d1it"]
+[gd_scene load_steps=9 format=3 uid="uid://f34duj01d1it"]
 
 [ext_resource type="Script" path="res://game/behavior/quits_to_title.gd" id="1_mqvfj"]
+[ext_resource type="Material" uid="uid://cwidbqg7ekcfh" path="res://generated/materials/lava_material.tres" id="1_thohv"]
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_title_screen.gd" id="2_i1n12"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="2_vqctg"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="3_rr3if"]
 [ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="4_hp366"]
+
+[sub_resource type="Gradient" id="Gradient_mxklf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a2gfl"]
+gradient = SubResource("Gradient_mxklf")
+width = 1366
+height = 200
+use_hdr = true
+fill_to = Vector2(0, 1)
+repeat = 1
 
 [node name="GameOverScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -12,6 +23,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_thohv")
+custom_minimum_size = Vector2(0, 768)
+layout_mode = 2
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_a2gfl")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

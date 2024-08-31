@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c12hg1fnj7lid"]
+[gd_scene load_steps=6 format=3 uid="uid://c12hg1fnj7lid"]
 
 [ext_resource type="Script" path="res://game/level/lava_scene.gd" id="1_ax2qc"]
+[ext_resource type="Material" uid="uid://cwidbqg7ekcfh" path="res://generated/materials/lava_material.tres" id="2_n5khm"]
 
 [sub_resource type="Gradient" id="Gradient_tcbvx"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.960938, 0, 1)
@@ -19,6 +20,7 @@ collision_mask = 2
 script = ExtResource("1_ax2qc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_n5khm")
 texture = SubResource("GradientTexture2D_pj6lc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
