@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck5nly71iwpkd"]
+[gd_scene load_steps=9 format=3 uid="uid://ck5nly71iwpkd"]
 
 [ext_resource type="Script" path="res://addons/game_manager/audio/autoload.gd" id="1_fcb7v"]
 [ext_resource type="AudioStream" uid="uid://bja7v8xihixmn" path="res://addons/game_manager/audio/sounds/ui/bfxr_blip.wav" id="2_pfvij"]
@@ -8,7 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://d2pj2swf5072m" path="res://assets/audio/sfx/buttonFocus.wav" id="6_6r5tf"]
 [ext_resource type="AudioStream" uid="uid://bjmb3ijdn0rj1" path="res://assets/audio/sfx/buttonPress.wav" id="7_a76b5"]
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kknlf"]
+
 [node name="Audio" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_fcb7v")
 
 [node name="Master" type="Node2D" parent="."]
@@ -36,6 +39,9 @@ playback_type = 1
 stream = ExtResource("5_kts0d")
 bus = &"BGM"
 playback_type = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGM"]
+stream = SubResource("AudioStreamInteractive_kknlf")
 
 [node name="SFX" type="Node2D" parent="."]
 

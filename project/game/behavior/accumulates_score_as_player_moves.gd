@@ -21,4 +21,3 @@ func _process(_delta: float) -> void:
 	distance_travelled = max(distance_travelled, 0.005 * (character.global_position.x - spawner.global_position.x))
 	var new_score = max(State.current_score, distance_travelled)
 	State.update_score(new_score)
-	printt(distance_travelled, new_score)
