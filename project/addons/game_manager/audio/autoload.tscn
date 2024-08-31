@@ -1,12 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck5nly71iwpkd"]
+[gd_scene load_steps=11 format=3 uid="uid://ck5nly71iwpkd"]
 
 [ext_resource type="Script" path="res://addons/game_manager/audio/autoload.gd" id="1_fcb7v"]
 [ext_resource type="AudioStream" uid="uid://bja7v8xihixmn" path="res://addons/game_manager/audio/sounds/ui/bfxr_blip.wav" id="2_pfvij"]
 [ext_resource type="AudioStream" uid="uid://dbj3ddvojwp00" path="res://assets/audio/music/budgetsuperhero.ogg" id="3_u4em6"]
 [ext_resource type="AudioStream" uid="uid://dkcbfeap1713b" path="res://assets/audio/music/gameovermaybe.wav" id="4_44uds"]
+[ext_resource type="AudioStream" uid="uid://ve84stw5m8r2" path="res://assets/audio/sfx/morelava.wav" id="4_773wp"]
 [ext_resource type="AudioStream" uid="uid://bvymv2icr63xk" path="res://assets/audio/music/menumusic.wav" id="5_kts0d"]
 [ext_resource type="AudioStream" uid="uid://d2pj2swf5072m" path="res://assets/audio/sfx/buttonFocus.wav" id="6_6r5tf"]
 [ext_resource type="AudioStream" uid="uid://bjmb3ijdn0rj1" path="res://assets/audio/sfx/buttonPress.wav" id="7_a76b5"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_4v2lk"]
+stream_count = 2
+stream_0/stream = ExtResource("3_u4em6")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("4_773wp")
+stream_1/volume = -60.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kknlf"]
 
@@ -26,7 +34,7 @@ stream = ExtResource("2_pfvij")
 bus = &"BGM"
 
 [node name="Level" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("3_u4em6")
+stream = SubResource("AudioStreamSynchronized_4v2lk")
 bus = &"BGM"
 playback_type = 1
 

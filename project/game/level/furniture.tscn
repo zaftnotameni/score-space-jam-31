@@ -25,6 +25,10 @@ shape = SubResource("RectangleShape2D_54ywe")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_mo0qu")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -224)
+occluder_light_mask = 4
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-2.50002, 7.62939e-06)
 scale = Vector2(16.15, 16.1)

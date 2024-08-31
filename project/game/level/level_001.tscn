@@ -102,3 +102,13 @@ script = ExtResource("17_l5ndh")
 
 [node name="ResetsCurrentScore" type="Node" parent="."]
 script = ExtResource("18_cx11n")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+rotation = 0.261799
+color = Color(0.301961, 0.0745098, 0.0588235, 1)
+range_layer_min = -20
+range_layer_max = 20
+range_item_cull_mask = 6
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.572549)
+shadow_item_cull_mask = 6

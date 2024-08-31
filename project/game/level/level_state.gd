@@ -17,12 +17,22 @@ static func change_level_state_to_floor():
 	original_lava_bg_position = Vector2(lava_bg.global_position.x, lava_bg.global_position.y)
 	lava_fg.position.y += Config.viewport_height
 	lava_bg.position.y += Config.viewport_height
+	var audio := Audio.first()
+	if audio:
+		var level_bgm : AudioStreamPlayer = audio.get_node('BGM/Level')
+		var synchro : AudioStreamSynchronized = level_bgm.stream
+		synchro.set_sync_stream_volume(1, -60)
 
 static var original_lava_fg_position : Vector2
 static var original_lava_bg_position : Vector2
 
 static func change_level_state_to_dinner():
 	Layers.layer_menu().add_child.call_deferred(game_over_screen_scene.instantiate())
+	var audio := Audio.first()
+	if audio:
+		var level_bgm : AudioStreamPlayer = audio.get_node('BGM/Level')
+		var synchro : AudioStreamSynchronized = level_bgm.stream
+		synchro.set_sync_stream_volume(1, -60)
 
 static func change_level_state_to_lava():
 	var state := LevelState.first()
@@ -40,6 +50,13 @@ static func change_level_state_to_lava():
 	var t := TweenUtil.tween_fresh_eased_in_out_cubic()
 	t.tween_property(lava, 'global_position', Vector2(the_floor.global_position.x, the_floor.global_position.y), 0.2)
 	t.parallel().tween_property(lava_bg, 'global_position', original_lava_bg_position, 0.2)
+
+	await t.finished
+	var audio := Audio.first()
+	if audio:
+		var level_bgm : AudioStreamPlayer = audio.get_node('BGM/Level')
+		var synchro : AudioStreamSynchronized = level_bgm.stream
+		synchro.set_sync_stream_volume(1, 0)
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)
