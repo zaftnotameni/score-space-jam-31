@@ -6,14 +6,6 @@
 [node name="FurnitureManager" type="Node2D"]
 script = ExtResource("1_oljml")
 
-[node name="FurnitureSpawnPoint" type="Marker2D" parent="."]
-
 [node name="SpawnPointDebuggingVisual" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_uam0s")
-
-[node name="SpawnPointVisual" type="Sprite2D" parent="."]
-modulate = Color(0.580392, 0.0862745, 0.670588, 1)
-position = Vector2(1653, 618)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_uam0s")
