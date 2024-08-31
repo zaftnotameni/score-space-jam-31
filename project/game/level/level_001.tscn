@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=22 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
 [ext_resource type="PackedScene" uid="uid://cex1musqut48y" path="res://game/level/background_lava.tscn" id="1_skaoa"]
+[ext_resource type="Texture2D" uid="uid://boux7mpvmykvw" path="res://assets/art/placeholders/IMG_0590.png" id="1_sm7it"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
 [ext_resource type="Script" path="res://game/player/spawner.gd" id="2_yh6s8"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauseable.gd" id="3_p86jh"]
@@ -26,11 +27,20 @@
 process_mode = 1
 metadata/_edit_lock_ = true
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+modulate = Color(0.2, 0.0509804, 0.0627451, 1)
+scroll_offset = Vector2(0, -200)
+repeat_size = Vector2(5000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_sm7it")
+
 [node name="BackgroundLavaScene" parent="." instance=ExtResource("1_skaoa")]
-position = Vector2(475, 584)
+position = Vector2(1171, 0)
 
 [node name="PlayerSpawner" type="Area2D" parent="."]
-position = Vector2(-696, 584)
 script = ExtResource("2_yh6s8")
 active = true
 
@@ -61,7 +71,7 @@ script = ExtResource("4_fyj6n")
 metadata/created_via_tool_script = true
 
 [node name="FurnitureKiller" type="Area2D" parent="."]
-position = Vector2(156, 1295)
+position = Vector2(852, 711)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("8_qkxgf")
@@ -70,13 +80,13 @@ script = ExtResource("8_qkxgf")
 shape = SubResource("WorldBoundaryShape2D_a75d6")
 
 [node name="FurnitureManager" parent="." instance=ExtResource("15_j8bh3")]
-position = Vector2(-576, 672)
+position = Vector2(120, 88)
 furniture_margin = 200.0
 furniture_speed = 0.0
 sink_speed = 15.0
 
 [node name="LevelState" type="Node2D" parent="."]
-position = Vector2(221, -14)
+position = Vector2(917, -598)
 script = ExtResource("14_tu8cc")
 
 [node name="RequestsSong" type="Node" parent="."]
@@ -84,13 +94,13 @@ script = ExtResource("15_yrv1a")
 song = "level"
 
 [node name="Lamp" parent="." instance=ExtResource("14_kwx83")]
-position = Vector2(1675, 0)
+position = Vector2(2371, -584)
 
 [node name="Lamp2" parent="." instance=ExtResource("14_kwx83")]
-position = Vector2(456, 0)
+position = Vector2(1152, -584)
 
 [node name="Lamp3" parent="." instance=ExtResource("14_kwx83")]
-position = Vector2(1120, 0)
+position = Vector2(1816, -584)
 
 [node name="AtHUD" type="Node" parent="."]
 script = ExtResource("15_5qp0k")
@@ -103,6 +113,7 @@ script = ExtResource("17_l5ndh")
 script = ExtResource("18_cx11n")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(696, -584)
 rotation = 0.261799
 color = Color(0.301961, 0.0745098, 0.0588235, 1)
 range_layer_min = -20
@@ -113,16 +124,16 @@ shadow_color = Color(0, 0, 0, 0.572549)
 shadow_item_cull_mask = 6
 
 [node name="Furniture" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(-352, 700)
+position = Vector2(344, 116)
 
 [node name="Furniture2" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(160, 679)
+position = Vector2(856, 95)
 
 [node name="Furniture3" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(752, 572)
+position = Vector2(1448, -12)
 
 [node name="Furniture4" parent="." instance=ExtResource("19_s0um8")]
-position = Vector2(1440, 556)
+position = Vector2(2136, -28)
 
 [node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
-position = Vector2(474, 704)
+position = Vector2(1170, 120)
