@@ -18,6 +18,7 @@ func on_pressed():
 	tween.parallel().tween_property(instance, ^'position:y', 0, 0.3).from(Config.viewport_height)
 
 	await tween.finished
+	owner.queue_free()
 	Layers.clear_all_layers([instance])
 
 func _enter_tree() -> void:

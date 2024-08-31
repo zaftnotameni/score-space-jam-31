@@ -2,9 +2,12 @@ class_name FurnitureManagerScene extends Marker2D
 
 const FURNITURE = preload("res://game/level/furniture.tscn")
 
-@export var furniture_margin : float = 20
-@export var furniture_speed : float = 1000
-@export var sink_speed : float = 10
+@export var furniture_margin : float = 20.0
+@export var furniture_speed : float = 1000.0
+@export var sink_speed : float = 10.0
+
+var minimum_angle : float = -PI/10.0
+var maximum_angle : float = PI/10.0
 
 var sinking_enabled : bool = false
 
@@ -32,6 +35,7 @@ func spawn_furniture(location : Vector2 = Vector2.ZERO) -> void:
 	add_child(furniture_instance)
 	
 	furniture_instance.position.x = location.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin
+	furniture_instance.rotate(randf_range(minimum_angle, maximum_angle))
 	var notifier := furniture_instance.visible_on_screen_notifier_2d as VisibleOnScreenNotifier2D
 	if not notifier: push_error('no notifier'); return
 

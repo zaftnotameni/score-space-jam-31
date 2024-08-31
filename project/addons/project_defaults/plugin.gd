@@ -30,6 +30,7 @@ func setup_default_project_metadata():
 	hex_file_url = 'https://lospec.com/palette-list/cold-war-8.hex'
 	hex_file_url = 'https://lospec.com/palette-list/not-a-bauhaus-a-bauhome.hex'
 	hex_file_url = 'https://lospec.com/palette-list/eight-hues-of-toxic-ooze.hex'
+	hex_file_url = 'https://lospec.com/palette-list/st-8-phoenix.hex'
 
 	if not FileAccess.file_exists(pallete_file_path):
 		print_verbose('downloading: ' + hex_file_url)

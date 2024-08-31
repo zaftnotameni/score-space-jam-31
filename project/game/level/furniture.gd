@@ -2,6 +2,18 @@ class_name Furniture extends CharacterBody2D
 
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D
+
+var potential_furniture_sizes : Array[Vector2i] = [
+	Vector2i(320, 320),
+	Vector2i(160, 480),
+	Vector2i(640, 160),
+	Vector2i(480, 160),
+]
+
+func _ready() -> void:
+	if not sprite_2d: return
+	if not collision: return
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)

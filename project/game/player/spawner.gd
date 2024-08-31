@@ -70,6 +70,7 @@ func deactivate():
 
 static func tree() -> SceneTree: return Engine.get_main_loop()
 static func all() -> Array: return tree().get_nodes_in_group(GROUP)
+static func first() -> PlayerSpawner: return tree().get_first_node_in_group(GROUP)
 static func current() -> PlayerSpawner:
 	for ps:PlayerSpawner in all():
 		if ps.active: return ps

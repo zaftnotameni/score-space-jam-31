@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bif5qxjxk5kgv"]
+[gd_scene load_steps=7 format=3 uid="uid://bif5qxjxk5kgv"]
 
 [ext_resource type="Script" path="res://addons/lootlocker/ui/leaderboard_ui_scene.gd" id="1_wvwih"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/press_blip.gd" id="2_iud67"]
 [ext_resource type="Script" path="res://addons/game_manager/audio/behavior/focus_blip.gd" id="3_bewuo"]
 [ext_resource type="Script" path="res://addons/behaviors/menu/closes_menu.gd" id="4_wnjl5"]
 [ext_resource type="Script" path="res://addons/behaviors/control/auto_focus.gd" id="5_hbjhj"]
+[ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="6_yq46s"]
 
 [node name="LeaderboardScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -80,3 +81,7 @@ script = ExtResource("4_wnjl5")
 
 [node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/Back"]
 script = ExtResource("5_hbjhj")
+
+[node name="RequestsSong" type="Node" parent="."]
+script = ExtResource("6_yq46s")
+song = "title"

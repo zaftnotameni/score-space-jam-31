@@ -48,74 +48,94 @@ wipe_state_stack = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.94902, 0.905882, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0.85098, 0.494118, 0.0862745, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 192
+text = "Dinner
+is
+Ready"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Start"
 
-[node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+[node name="AutoFocusBehavior" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Start"]
 script = ExtResource("3_jyfl5")
 
-[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Start"]
 script = ExtResource("4_5xyqm")
 
-[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Start"]
 script = ExtResource("5_sjv7u")
 
-[node name="StartsGame" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+[node name="StartsGame" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Start"]
 script = ExtResource("6_mc876")
 
-[node name="SetsTargetAsLevel001" type="Node" parent="MarginContainer/VBoxContainer/Start/StartsGame"]
+[node name="SetsTargetAsLevel001" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Start/StartsGame"]
 script = ExtResource("7_7rbdx")
 
-[node name="Leaderboard" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Leaderboard" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Leaderboard"
 
-[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Leaderboard"]
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Leaderboard"]
 script = ExtResource("4_5xyqm")
 
-[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Leaderboard"]
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Leaderboard"]
 script = ExtResource("5_sjv7u")
 
-[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/Leaderboard"]
+[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Leaderboard"]
 script = ExtResource("6_4il7w")
 menu_scene = ExtResource("7_dctll")
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Options"
 
-[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Options"]
 script = ExtResource("4_5xyqm")
 
-[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Options"]
 script = ExtResource("5_sjv7u")
 
-[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/Options"]
 script = ExtResource("6_4il7w")
 menu_scene = ExtResource("7_4hyfi")
 
-[node name="About" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="About" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "About"
 
-[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/About"]
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/About"]
 script = ExtResource("4_5xyqm")
 
-[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/About"]
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/About"]
 script = ExtResource("5_sjv7u")
 
-[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/About"]
+[node name="OpensMenu" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/About"]
 script = ExtResource("6_4il7w")
 menu_scene = ExtResource("8_io3rl")
 

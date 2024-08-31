@@ -1,18 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=19 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
 [ext_resource type="PackedScene" uid="uid://cex1musqut48y" path="res://game/level/background_lava.tscn" id="1_skaoa"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
-[ext_resource type="PackedScene" uid="uid://bsvjn4whb84da" path="res://game/player/character.tscn" id="3_n8apo"]
+[ext_resource type="Script" path="res://game/player/spawner.gd" id="2_yh6s8"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauseable.gd" id="3_p86jh"]
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_pause_screen.gd" id="4_fyj6n"]
 [ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_gkftf"]
 [ext_resource type="PackedScene" uid="uid://blcn8ouedmnvf" path="res://game/screen/pause_screen.tscn" id="8_2esjf"]
 [ext_resource type="Script" path="res://game/level/furniture_killer.gd" id="8_qkxgf"]
 [ext_resource type="PackedScene" uid="uid://dhmkqicg6bfyp" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
+[ext_resource type="PackedScene" uid="uid://bbtcq5lasw64p" path="res://game/obstacles/lamp.tscn" id="14_kwx83"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
+[ext_resource type="Script" path="res://addons/game_manager/layers/at/hud.gd" id="15_5qp0k"]
 [ext_resource type="PackedScene" uid="uid://b30g6r2vwk6q8" path="res://game/furniture_manager/furniture_manager.tscn" id="15_j8bh3"]
 [ext_resource type="Script" path="res://game/behavior/requests_song.gd" id="15_yrv1a"]
+[ext_resource type="PackedScene" uid="uid://d2are6hf3fmw5" path="res://game/score/score_hud.tscn" id="16_klgqa"]
+[ext_resource type="Script" path="res://game/behavior/accumulates_score_as_player_moves.gd" id="17_l5ndh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a75d6"]
 
@@ -22,6 +26,11 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundLavaScene" parent="." instance=ExtResource("1_skaoa")]
 position = Vector2(475, 584)
+
+[node name="PlayerSpawner" type="Area2D" parent="."]
+position = Vector2(-696, 584)
+script = ExtResource("2_yh6s8")
+active = true
 
 [node name="Camera" type="Camera2D" parent="."]
 process_callback = 0
@@ -49,9 +58,6 @@ metadata/created_via_tool_script = true
 script = ExtResource("4_fyj6n")
 metadata/created_via_tool_script = true
 
-[node name="Character" parent="." instance=ExtResource("3_n8apo")]
-position = Vector2(-800, 483)
-
 [node name="FurnitureKiller" type="Area2D" parent="."]
 position = Vector2(156, 1295)
 collision_layer = 0
@@ -77,3 +83,18 @@ song = "level"
 
 [node name="LavaAndFloor" parent="." instance=ExtResource("14_el7tk")]
 position = Vector2(474, 704)
+
+[node name="Lamp" parent="." instance=ExtResource("14_kwx83")]
+
+[node name="Lamp2" parent="." instance=ExtResource("14_kwx83")]
+position = Vector2(456, 0)
+
+[node name="Lamp3" parent="." instance=ExtResource("14_kwx83")]
+position = Vector2(1232, 0)
+
+[node name="AtHUD" type="Node" parent="."]
+script = ExtResource("15_5qp0k")
+scene = ExtResource("16_klgqa")
+
+[node name="AccumulatesScoreAsPlayerMoves" type="Node" parent="."]
+script = ExtResource("17_l5ndh")
