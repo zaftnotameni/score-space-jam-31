@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsvjn4whb84da"]
+[gd_scene load_steps=20 format=3 uid="uid://bsvjn4whb84da"]
 
 [ext_resource type="Script" path="res://game/player/character_scene.gd" id="1_xdwo1"]
 [ext_resource type="Script" path="res://game/player/components.gd" id="2_1nx8q"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://game/player/direction/left.gd" id="12_yyfc6"]
 [ext_resource type="Script" path="res://game/player/input.gd" id="14_rlfv4"]
 [ext_resource type="SpriteFrames" uid="uid://bq755jnlong8g" path="res://assets/art/character/character_sprite_frames.tres" id="17_ukslt"]
+[ext_resource type="PackedScene" uid="uid://pgos1agiqyqj" path="res://game/obstacles/obstacle_killer.tscn" id="18_utqu8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3sqf"]
 radius = 17.0
@@ -82,3 +83,5 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3)
 shape = SubResource("CapsuleShape2D_g3sqf")
+
+[node name="ObstacleKiller" parent="." instance=ExtResource("18_utqu8")]

@@ -30,3 +30,7 @@ static func all() -> Array: return tree().get_nodes_in_group(GROUP)
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)
+
+
+func destroy() -> void:
+	queue_free()

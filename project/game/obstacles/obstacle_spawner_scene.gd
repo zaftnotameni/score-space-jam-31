@@ -46,7 +46,7 @@ func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZER
 	
 	add_child(furniture_instance)
 	
-	furniture_instance.position.x = local_position_of_previous_obstacle.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin
+	furniture_instance.position.x = local_position_of_previous_obstacle.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin + randf_range(-20, 100)
 	furniture_instance.rotate(randf_range(minimum_angle, maximum_angle))
 	var notifier := furniture_instance.visible_on_screen_notifier_2d as VisibleOnScreenNotifier2D
 	if not notifier: push_error('no notifier'); return
@@ -54,13 +54,21 @@ func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZER
 	notifier.screen_entered.connect(_furniture_entered_screen.bind(furniture_instance), CONNECT_ONE_SHOT)
 
 
-func spawn_lamp() -> void:
-	print("lamp go here")
+func spawn_lamp(local_position_of_previous_obstacle : Vector2 = Vector2.ZERO) -> void:
+	var lamp_instance = lamp_scene.instantiate()
+	
+	add_child(lamp_instance)
+	
+	lamp_instance.position.y = -596
+	lamp_instance.position.x = local_position_of_previous_obstacle.x + furniture_margin
+	
+	# Lamps are not currently being destroyed
+	# If I make a world border collision to delete objects then it also deletes the cubes before their position gets set
 
 
 
 func _furniture_entered_screen(furniture : FurnitureScene) -> void:
 	spawn_furniture(furniture.position)
 	
-	if !randi_range(0,5):
-		spawn_lamp()
+	if !randi_range(0,3):
+		spawn_lamp(furniture.position)
