@@ -33,11 +33,13 @@ func on_level_state_changed():
 	sinking_enabled = level_state.stage == LevelState.Stage.LAVA
 	set_physics_process(sinking_enabled)
 
+
 func _physics_process(delta: float) -> void:
 	for furniture in FurnitureScene.all():
 		if not furniture.visible_on_screen_notifier_2d.is_on_screen(): continue
 		furniture.position.x -= furniture_speed * delta
 		furniture.position.y += sink_speed * delta
+
 
 func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZERO) -> void:
 	var furniture_instance = furniture_scene.instantiate()
@@ -48,8 +50,17 @@ func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZER
 	furniture_instance.rotate(randf_range(minimum_angle, maximum_angle))
 	var notifier := furniture_instance.visible_on_screen_notifier_2d as VisibleOnScreenNotifier2D
 	if not notifier: push_error('no notifier'); return
-
+	
 	notifier.screen_entered.connect(_furniture_entered_screen.bind(furniture_instance), CONNECT_ONE_SHOT)
+
+
+func spawn_lamp() -> void:
+	print("lamp go here")
+
+
 
 func _furniture_entered_screen(furniture : FurnitureScene) -> void:
 	spawn_furniture(furniture.position)
+	
+	if !randi_range(0,5):
+		spawn_lamp()

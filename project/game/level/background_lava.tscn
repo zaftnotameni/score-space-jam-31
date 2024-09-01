@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3peilxhmwltb"]
+[gd_scene load_steps=4 format=3 uid="uid://b3peilxhmwltb"]
 
 [ext_resource type="Script" path="res://game/level/background_lava_scene.gd" id="1_lj0k4"]
-[ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="1_s7bap"]
 
 [sub_resource type="Gradient" id="Gradient_ujvx2"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.960938, 0, 1)
@@ -10,7 +9,8 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0.960938, 0, 1)
 gradient = SubResource("Gradient_ujvx2")
 width = 2400
 height = 192
-fill_from = Vector2(1, 1)
+fill_from = Vector2(0.87291, 0)
+fill_to = Vector2(0.876254, 0.41806)
 
 [node name="BackgroundLavaScene" type="Node2D"]
 script = ExtResource("1_lj0k4")
@@ -20,5 +20,4 @@ scroll_scale = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 show_behind_parent = true
-material = ExtResource("1_s7bap")
 texture = SubResource("GradientTexture2D_eetmd")

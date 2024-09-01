@@ -48,8 +48,8 @@ static func change_level_state_to_lava():
 	if not lava_bg: push_error('using lava when it is not available'); return
 	if not the_floor: push_error('using lava when it is not available'); return
 	var t := TweenUtil.tween_fresh_eased_in_out_cubic()
-	t.tween_property(lava, 'global_position', Vector2(the_floor.global_position.x, the_floor.global_position.y), 0.2)
-	t.parallel().tween_property(lava_bg, 'global_position', original_lava_bg_position, 0.2)
+	t.tween_property(lava, 'global_position', Vector2(the_floor.global_position.x, the_floor.global_position.y), 0.3)
+	t.parallel().tween_property(lava_bg, 'global_position', original_lava_bg_position, 0.3)
 
 	await t.finished
 	var audio := Audio.first()
