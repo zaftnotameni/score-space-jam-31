@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5266jl6esq6g"]
+[gd_scene load_steps=20 format=3 uid="uid://b5266jl6esq6g"]
 
 [ext_resource type="Script" path="res://addons/game_manager/state/in/game.gd" id="1_fkxgb"]
-[ext_resource type="PackedScene" uid="uid://cex1musqut48y" path="res://game/level/background_lava.tscn" id="1_skaoa"]
+[ext_resource type="PackedScene" uid="uid://b3peilxhmwltb" path="res://game/level/background_lava.tscn" id="1_skaoa"]
 [ext_resource type="Texture2D" uid="uid://boux7mpvmykvw" path="res://assets/art/placeholders/IMG_0590.png" id="1_sm7it"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_pmrin"]
 [ext_resource type="Script" path="res://game/player/spawner.gd" id="2_yh6s8"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://game/behavior/sets_target_as_pause_screen.gd" id="4_fyj6n"]
 [ext_resource type="Script" path="res://addons/behaviors/camera/follows.gd" id="4_gkftf"]
 [ext_resource type="PackedScene" uid="uid://blcn8ouedmnvf" path="res://game/screen/pause_screen.tscn" id="8_2esjf"]
-[ext_resource type="Script" path="res://game/level/furniture_killer.gd" id="8_qkxgf"]
 [ext_resource type="PackedScene" uid="uid://dhmkqicg6bfyp" path="res://game/level/lava_and_floor.tscn" id="14_el7tk"]
 [ext_resource type="PackedScene" uid="uid://bbtcq5lasw64p" path="res://game/obstacles/lamp.tscn" id="14_kwx83"]
 [ext_resource type="Script" path="res://game/level/level_state.gd" id="14_tu8cc"]
@@ -21,19 +20,18 @@
 [ext_resource type="Script" path="res://game/behavior/resets_current_score.gd" id="18_cx11n"]
 [ext_resource type="PackedScene" uid="uid://b67t7a0hpaa0o" path="res://game/obstacles/furniture.tscn" id="19_s0um8"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a75d6"]
-
 [node name="Level001" type="Node2D"]
 process_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
-modulate = Color(0.2, 0.0509804, 0.0627451, 1)
-scroll_offset = Vector2(0, -200)
+[node name="WallSketch" type="Parallax2D" parent="."]
+modulate = Color(0.642754, 0.664616, 0.502674, 1)
+scroll_offset = Vector2(0, -193)
 repeat_size = Vector2(5000, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="WallSketch"]
 texture_repeat = 2
+position = Vector2(0, -118)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_sm7it")
 
@@ -69,15 +67,6 @@ metadata/created_via_tool_script = true
 [node name="SetsTargetAsPauseScreen" type="Node" parent="Pauseable"]
 script = ExtResource("4_fyj6n")
 metadata/created_via_tool_script = true
-
-[node name="FurnitureKiller" type="Area2D" parent="."]
-position = Vector2(852, 711)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("8_qkxgf")
-
-[node name="WorldBoundaryShape" type="CollisionShape2D" parent="FurnitureKiller"]
-shape = SubResource("WorldBoundaryShape2D_a75d6")
 
 [node name="FurnitureManager" parent="." instance=ExtResource("15_j8bh3")]
 position = Vector2(120, 88)

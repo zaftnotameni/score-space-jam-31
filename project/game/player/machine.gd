@@ -3,6 +3,8 @@ class_name PlayerMachines extends Node2D
 @onready var machine_movement := MovementMachine.first()
 @onready var machine_direction := DirectionMachine.first()
 
+@export var print_states : bool = false
+
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	machine_movement.machine_mode = StateMachine.MACHINE_MODE.Physics
@@ -18,4 +20,5 @@ func _ready() -> void:
 	machine_direction.sig_state_will_transition.connect(state_will_change)
 
 func state_will_change(next:Node, curr:Node, prev:Node):
-	printt(prev.name, curr.name, next.name)
+	if print_states:
+		printt(prev.name, curr.name, next.name)

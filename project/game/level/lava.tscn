@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c12hg1fnj7lid"]
+[gd_scene load_steps=5 format=3 uid="uid://c12hg1fnj7lid"]
 
 [ext_resource type="Script" path="res://game/level/lava_scene.gd" id="1_ax2qc"]
-[ext_resource type="Material" uid="uid://d04y5jfo0rqp" path="res://generated/materials/lava_material.tres" id="2_n5khm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ne501"]
 distance = 24.0
@@ -21,10 +20,9 @@ collision_mask = 2
 script = ExtResource("1_ax2qc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -71)
+position = Vector2(0, -67)
 shape = SubResource("WorldBoundaryShape2D_ne501")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
-material = ExtResource("2_n5khm")
 texture = SubResource("GradientTexture2D_pj6lc")
