@@ -1,5 +1,8 @@
 class_name PlayerVisual extends Node2D
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+
+
 func on_animation_changed():
 	pass
 

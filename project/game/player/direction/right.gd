@@ -14,4 +14,3 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func on_state_enter(_prev:Node=null) -> void:
 	visuals.scale.x = 1
-

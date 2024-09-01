@@ -44,6 +44,11 @@ func apply_directional_movement(delta:float) -> void:
 		character.velocity.x = move_toward(character.velocity.x, stats.speed, stats.speed_loss_factor * delta)
 	else:
 		character.velocity.x = stats.speed * input.x()
+	
+		if abs(character.velocity.x) > 0:
+			PlayerVisual.first().sprite_2d.play("Walking")
+		else:
+			PlayerVisual.first().sprite_2d.play("Idle")
 
 func apply_jump(_delta:float) -> void:
 	character.velocity.y = -stats.jump_velocity

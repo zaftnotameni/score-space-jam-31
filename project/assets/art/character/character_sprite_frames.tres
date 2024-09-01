@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bq755jnlong8g"]
+
+[ext_resource type="Texture2D" uid="uid://0g52qi2tb1ge" path="res://assets/art/character/Idle-1.png" id="1_r3xlj"]
+[ext_resource type="Texture2D" uid="uid://maktdektbtob" path="res://assets/art/character/Idle-2.png" id="2_li5od"]
+[ext_resource type="Texture2D" uid="uid://2i0j6borahc8" path="res://assets/art/character/Walk-1.png" id="3_vvv8v"]
+[ext_resource type="Texture2D" uid="uid://2gc44lxq51xg" path="res://assets/art/character/Walk-2.png" id="4_cvpyd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r3xlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_li5od")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vvv8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cvpyd")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
