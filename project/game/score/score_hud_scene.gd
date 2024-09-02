@@ -1,2 +1,1 @@
-class_name ScoreHudScene extends PanelContainer
-
+class_name ScoreHudScene extends Container

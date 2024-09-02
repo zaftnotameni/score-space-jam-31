@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" path="res://game/obstacles/lamp_scene.gd" id="1_qo4fg"]
 
+[sub_resource type="Gradient" id="Gradient_bwbal"]
+colors = PackedColorArray(0, 0, 0, 1, 0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0r776"]
+gradient = SubResource("Gradient_bwbal")
+width = 3
+height = 256
+fill_to = Vector2(0, 1)
+
 [sub_resource type="Gradient" id="Gradient_08qlb"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ukmab"]
@@ -24,23 +33,26 @@ fill_from = Vector2(1, 1)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_guek4"]
 polygon = PackedVector2Array(16, 16, 16, -3, -16, -3, -16, 16, 1, 5)
 
-[sub_resource type="Gradient" id="Gradient_bwbal"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0r776"]
-gradient = SubResource("Gradient_bwbal")
-width = 3
-height = 256
-fill_to = Vector2(0, 1)
-
 [node name="Lamp" type="Node2D"]
 script = ExtResource("1_qo4fg")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 480)
+scale = Vector2(2.8875, 3.75)
+texture = SubResource("GradientTexture2D_0r776")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.119087, 0.0995465, 0.0867526, 1)
+polygon = PackedVector2Array(-11, 952, -6, 975, 4, 977, 9, 952)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 256)
+visible = false
+position = Vector2(-1, 960)
 texture = SubResource("GradientTexture2D_ukmab")
 
 [node name="GrabArea" type="Area2D" parent="Sprite2D"]
 unique_name_in_owner = true
+visible = false
 collision_layer = 32
 collision_mask = 2
 
@@ -48,6 +60,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_tywv0")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+visible = false
 position = Vector2(1, 61)
 color = Color(0.94902, 0.905882, 0.286275, 1)
 range_layer_min = -20
@@ -59,12 +72,12 @@ shadow_item_cull_mask = 6
 texture = SubResource("GradientTexture2D_xt63y")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_guek4")
 occluder_light_mask = 8
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
 unique_name_in_owner = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, 128)
-texture = SubResource("GradientTexture2D_0r776")
+visible = false
+position = Vector2(1.19209e-06, 0)
+scale = Vector2(1.5, 1.5)

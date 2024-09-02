@@ -7,12 +7,13 @@
 size = Vector2(320, 320)
 
 [sub_resource type="Gradient" id="Gradient_1xa65"]
+colors = PackedColorArray(0.191318, 0.0656274, 1.20327e-08, 1, 0.28485, 0.28485, 0.28485, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mo0qu"]
 gradient = SubResource("Gradient_1xa65")
 width = 320
 height = 320
-fill_from = Vector2(0.252137, 0.277778)
+fill_from = Vector2(1, 0.880342)
 
 [node name="Furniture" type="CharacterBody2D"]
 collision_layer = 4

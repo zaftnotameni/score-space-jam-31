@@ -6,8 +6,8 @@
 distance = 32.0
 
 [sub_resource type="Gradient" id="Gradient_xtdqa"]
-offsets = PackedFloat32Array(0.0028169, 0.988732)
-colors = PackedColorArray(0.110901, 0.617188, 0.534125, 1, 0.0827484, 0.0186768, 0.53125, 1)
+offsets = PackedFloat32Array(0.00425532, 0.988732)
+colors = PackedColorArray(0.711898, 0.474951, 0.216655, 1, 0.337481, 0.249119, 0.115851, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cbu5v"]
 gradient = SubResource("Gradient_xtdqa")
@@ -24,4 +24,6 @@ script = ExtResource("1_wtaqe")
 shape = SubResource("WorldBoundaryShape2D_7h0j0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1687.5, -45)
+scale = Vector2(2.40625, 2.40625)
 texture = SubResource("GradientTexture2D_cbu5v")

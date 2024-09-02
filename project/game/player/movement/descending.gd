@@ -11,7 +11,7 @@ func on_state_exit(_next:Node=null) -> void:
 	pass
 
 func on_state_enter(_prev:Node=null) -> void:
-	pass
+	PlayerVisual.first().sprite_2d.play("Jumping")
 
 func apply_gravity(delta:float) -> void:
 	if Input.is_action_pressed('player_jump'):

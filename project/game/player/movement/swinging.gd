@@ -11,9 +11,9 @@ var is_jump : bool
 var previous_velocity := Vector2.ZERO
 var lamp : LampScene
 var rotation_accel : float = 1.0
-var max_rotation_speed : float = 2.0
-var min_rotation_speed : float = 0.5
-var rotation_speed : float = 1.0
+var max_rotation_speed : float = 0.5
+var min_rotation_speed : float = 0.2
+var rotation_speed : float = 0.25
 var base_jump_off_speed : float = 300.0
 
 func on_state_exit(_next:Node=null) -> void:
@@ -25,6 +25,7 @@ func on_state_enter(_prev:Node=null) -> void:
 	lamp = get_tree().current_scene.get_node(character.get_meta('lamp_selector', ''))
 	if not lamp: push_error('invalid lamp'); return
 	if not lamp.grab_area: push_error('invalid lamp.grab_area'); return
+	PlayerVisual.first().sprite_2d.play("Swinging")
 
 	character.global_position = lamp.grab_area.global_position
 	character.remove_meta('lamp_selector')
@@ -34,13 +35,13 @@ func on_state_enter(_prev:Node=null) -> void:
 func apply_rotation(delta:float) -> void:
 	match machine_direction.current_state_id():
 		PlayerEnums.Direction.RIGHT:
-			lamp.rotation = move_toward(lamp.rotation, -PI/4.0, delta * rotation_speed)
-			if is_equal_approx(-PI/4.0, lamp.rotation):
+			lamp.rotation = move_toward(lamp.rotation, -PI/12.0, delta * rotation_speed)
+			if is_equal_approx(-PI/12.0, lamp.rotation):
 				machine_direction.transition(PlayerEnums.Direction.LEFT, 'lamp-grab-turn-left')
 
 		PlayerEnums.Direction.LEFT:
-			lamp.rotation = move_toward(lamp.rotation, PI/4.0, delta * rotation_speed)
-			if is_equal_approx(PI/4.0, lamp.rotation):
+			lamp.rotation = move_toward(lamp.rotation, PI/12.0, delta * rotation_speed)
+			if is_equal_approx(PI/12.0, lamp.rotation):
 				machine_direction.transition(PlayerEnums.Direction.RIGHT, 'lamp-grab-turn-right')
 
 func apply_directional_movement(delta:float) -> void:

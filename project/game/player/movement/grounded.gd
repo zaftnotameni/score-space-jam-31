@@ -45,6 +45,7 @@ func apply_directional_movement(delta:float) -> void:
 	else:
 		character.velocity.x = stats.speed * input.x()
 	
+	if character.is_on_floor():
 		if abs(character.velocity.x) > 0:
 			PlayerVisual.first().sprite_2d.play("Walking")
 		else:

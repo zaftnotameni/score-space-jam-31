@@ -4,7 +4,6 @@ const furniture_scene : PackedScene = preload("res://game/obstacles/furniture.ts
 const lamp_scene : PackedScene = preload("res://game/obstacles/lamp.tscn")
 
 @export var furniture_margin : float = 20.0
-@export var furniture_speed : float = 1000.0
 @export var sink_speed : float = 10.0
 
 var minimum_angle : float = -PI/10.0
@@ -37,8 +36,7 @@ func on_level_state_changed():
 func _physics_process(delta: float) -> void:
 	for furniture in FurnitureScene.all():
 		if not furniture.visible_on_screen_notifier_2d.is_on_screen(): continue
-		furniture.position.x -= furniture_speed * delta
-		furniture.position.y += sink_speed * delta
+		furniture.position.y += (sink_speed + randf_range(-4,4)) * delta
 
 
 func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZERO) -> void:
@@ -46,7 +44,7 @@ func spawn_furniture(local_position_of_previous_obstacle : Vector2 = Vector2.ZER
 	
 	add_child(furniture_instance)
 	
-	furniture_instance.position.x = local_position_of_previous_obstacle.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin + randf_range(-20, 100)
+	furniture_instance.position.x = local_position_of_previous_obstacle.x + furniture_instance.sprite_2d.texture.get_size().x + furniture_margin + randf_range(-20, 400)
 	furniture_instance.rotate(randf_range(minimum_angle, maximum_angle))
 	var notifier := furniture_instance.visible_on_screen_notifier_2d as VisibleOnScreenNotifier2D
 	if not notifier: push_error('no notifier'); return
@@ -59,8 +57,8 @@ func spawn_lamp(local_position_of_previous_obstacle : Vector2 = Vector2.ZERO) ->
 	
 	add_child(lamp_instance)
 	
-	lamp_instance.position.y = -596
-	lamp_instance.position.x = local_position_of_previous_obstacle.x + furniture_margin
+	lamp_instance.position.y = -1330
+	lamp_instance.position.x = local_position_of_previous_obstacle.x + (furniture_margin * 1.5)
 	
 	# Lamps are not currently being destroyed
 	# If I make a world border collision to delete objects then it also deletes the cubes before their position gets set

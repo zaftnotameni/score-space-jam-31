@@ -17,6 +17,7 @@ func on_state_exit(_next:Node=null) -> void:
 func on_state_enter(_prev:Node=null) -> void:
 	elapsed = 0.0
 	is_jump_cancelled = false
+	PlayerVisual.first().sprite_2d.play("Jumping")
 
 func apply_gravity(delta:float) -> void:
 	if is_jump_cancelled:

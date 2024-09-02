@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://game/score/score_hud_scene.gd" id="1_kvswr"]
 [ext_resource type="Script" path="res://game/behavior/shows_current_distance.gd" id="2_vi6et"]
 
-[node name="ScoreHUD" type="PanelContainer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -100.0
+[node name="ScoreHUD" type="Container"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
 offset_bottom = 102.0
-grow_horizontal = 0
+grow_horizontal = 2
+size_flags_horizontal = 4
 script = ExtResource("1_kvswr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -4,3 +4,4 @@
 
 [node name="ObstacleSpawner" type="Marker2D"]
 script = ExtResource("1_oljml")
+furniture_margin = 40.0

@@ -1,14 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhmkqicg6bfyp"]
+[gd_scene load_steps=2 format=3 uid="uid://dhmkqicg6bfyp"]
 
 [ext_resource type="PackedScene" uid="uid://c12hg1fnj7lid" path="res://game/level/lava.tscn" id="1_vxxx1"]
-[ext_resource type="PackedScene" uid="uid://de7n37cl6bnng" path="res://game/level/floor.tscn" id="2_kql6a"]
 
 [node name="LavaAndFloor" type="Node2D"]
-
-[node name="FloorParallax" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0, 1)
-
-[node name="Floor" parent="FloorParallax" instance=ExtResource("2_kql6a")]
 
 [node name="LavaParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 1)
